@@ -12,22 +12,20 @@
         var userId = $routeParams["userId"];
 
         model.updateUser = updateUser;
-        model.unregister = unregister;
+        model.deleteUser = deleteUser;
 
         function init(){
             model.user = userService.findUserById(userId);
         }
         init();
-        
 
-        /*
         function updateUser(user) {
             userService.updateUser(user._id, user)
         }
-        */
 
-        function unregister() {
-            
+
+        function deleteUser(user) {
+            userService.deleteUser(user._id)
         }
 
 

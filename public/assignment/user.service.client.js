@@ -13,31 +13,20 @@
 
 
         var api = {
+            "registerUser": registerUser,
+            "findUserById": findUserById,
             "findUserByUsername": findUserByUsername,
             "findUserByCredentials": findUserByCredentials,
-            "findUserById": findUserById,
-            "registerUser": registerUser,
             "updateUser": updateUser,
-            "unregister": unregister
+            "deleteUser": deleteUser
         };
         return api;
-
-        function updateUser(userId, user) {
-            for (var u in users) {
-                if (users[u]._id === userId) {
-                    users[u] = user;
-                    return;
-                }
-            }
-            return null;
-        }
 
         // equivalent to createUser(user)
         function registerUser(user) {
             user._id = (new Date()).getTime() + "";
             users.push(user);
             return user;
-
         }
 
         function findUserById(userId) {
@@ -69,8 +58,22 @@
             return null;
         }
 
-        function unregister(user) {
+        function updateUser(userId, user) {
+            for (var u in users) {
+                if (users[u]._id === userId) {
+                    users[u] = user;
+                    return;
+                }
+            }
+            return null;
+        }
 
+        function deleteUser(userId) {
+            var user = users.find(function user() {
+                return user._id === userId;
+            });
+            var index = users.indexOf(user);
+            users.splice(index, 1);
         }
     }
 
