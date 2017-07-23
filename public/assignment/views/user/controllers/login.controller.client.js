@@ -10,28 +10,49 @@
     function loginController($location, userService) {
         var model = this;
 
+
         model.login = login;
 
-        function init(){
-
+        function init() {
         }
 
         init();
 
+
         function login(user) {
-         /**   if(!user) {
-                model.errorMessage = "User not found";
-                return;
-            }*/
+            /**   if(!user) {
+         model.errorMessage = "User not found";
+         return;
+         }*/
+
             user = userService.findUserByCredentials(user.username, user.password);
             if(user === null) {
-                model.errorMessage = "User not found";
+                model.error = "User not found";
                 return;
             } else {
                 // navigates user to user's profile
-                $location.url("profile/"+ user._id);
+                $location.url("user/"+ user._id);
             }
         }
+
+        /* need fixing
+         function login(user) {
+
+         var found = userService.findUserByCredentials(user.username, user.password);
+         var exist = userService.findUserByUsername(user.username);
+         if (exist === null) {
+         model.error = "User not found";
+         return;
+         } else {
+         if (user.password !== found.password) {
+         model.error = "Passwords don't match, please try again"
+         } else{
+         // navigates user to user's profile
+         $location.url("user/" + user._id);
+         }
+         }
+         }
+         */
     }
 })();
 

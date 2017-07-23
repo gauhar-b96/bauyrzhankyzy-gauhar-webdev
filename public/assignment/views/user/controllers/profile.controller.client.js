@@ -11,6 +11,7 @@
         var model = this;
         var userId = $routeParams["userId"];
 
+        // event handlers
         model.updateUser = updateUser;
         model.deleteUser = deleteUser;
 

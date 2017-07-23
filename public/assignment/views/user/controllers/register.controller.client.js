@@ -40,7 +40,7 @@
 
          }
          */
-
+/* newer version
         function registerUser(user) {
             var _user = userService.findUserByUsername(user.username);
             if (!_user) {
@@ -57,5 +57,28 @@
                 return;
             }
         }
+
+        */
+
+        function registerUser(user) {
+
+            if( user.password !== user.password2) {
+                model.error = "Passwords must match";
+                return;
+            }
+
+            var found = userService.findUserByUsername(user.username);
+
+            if (!found) {
+                var newUser = userService.registerUser(user);
+                // navigates user to user's profile
+                $location.url("user/" + newUser._id);
+            }
+             else {
+                model.error = "Username already exists";
+                return;
+            }
+        }
+
     }
 })();
