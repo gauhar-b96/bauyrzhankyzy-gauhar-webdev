@@ -21,16 +21,15 @@
         // implementation
         function registerUser(user) {
             var _user = userService.findUserByUsername(user.username);
-            if(!_user) {
+            if (!_user) {
                 var user = userService.registerUser(user);
                 // navigates user to user's profile
-                $location.url("profile/"+user._id);
-            } else{
+                $location.url("profile/" + user._id);
+            } else {
                 model.error = "User already exists";
             }
 
 
-console.log(user);
             if(_user.password !== _user.password2) {
                 model.errorMessage = "Passwords don't match";
                 return;

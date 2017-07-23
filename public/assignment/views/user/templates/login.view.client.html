@@ -1,7 +1,9 @@
 
 <div class="container-fluid">
 
-
+        <div ng-show="model.errorMessage" class="alert alert-danger">
+                {{model.errorMessage}}
+        </div>
 
 
         <h2>Login</h2>
@@ -26,8 +28,8 @@
            ng-click="model.login(model.user)">Login</a>
 
         <a class="btn btn-default btn-success btn-block"
-           href="#!/Register"
-           role="button">Register</a>
+           role="button"
+           href="#!/register">Register</a>
 
 </div>
 

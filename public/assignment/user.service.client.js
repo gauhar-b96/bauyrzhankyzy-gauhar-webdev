@@ -17,7 +17,8 @@
             "findUserByUsernameAndPassword": findUserByUsernameAndPassword,
             "findUserById": findUserById,
             "registerUser": registerUser,
-            "updateUser": updateUser
+            "updateUser": updateUser,
+            "unregister": unregister
         };
         return api;
 
@@ -65,6 +66,10 @@
                 }
             }
             return null;
+        }
+
+        function unregister(user) {
+
         }
     }
 

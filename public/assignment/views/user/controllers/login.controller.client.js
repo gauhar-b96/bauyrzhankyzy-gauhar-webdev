@@ -19,13 +19,14 @@
         init();
 
         function login(user) {
-            if(!user) {
+         /**   if(!user) {
                 model.errorMessage = "User not found";
                 return;
-            }
+            }*/
             user = userService.findUserByUsernameAndPassword(user.username, user.password);
             if(user === null) {
                 model.errorMessage = "User not found";
+                return;
             } else {
                 // navigates user to user's profile
                 $location.url("profile/"+ user._id);

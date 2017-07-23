@@ -1,46 +1,30 @@
-<body>
-
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-
-        <a href="profile.html">
-            <span class="pull-right glyphicon glyphicon-ok"></span></a>
-
-        <a class="navbar">Profile</a>
-    </div>
-</nav>
-
 <div class="container-fluid">
 
     <label for="firstName">First Name</label>
     <input name="firstName"
            ng-model="model.user.firstName"
-           placeholder="Alice"
            class="form-control"
            id="firstName"/>
 
     <label for="lastName">Last Name</label>
     <input name="lastName"
            ng-model="model.user.lastName"
-           placeholder="Wonderland"
            class="form-control"
            id="lastName"/>
 
     <label for="username">Username</label>
     <input name="username"
-           ng-model="model.user.userame"
+           ng-model="model.user.username"
            readonly
-           value="alice"
-           placeholder="Alice"
            class="form-control"
            id="username"/>
 
     <label for="email">Email</label>
     <input name="email"
            type="email"
-           placeholder="alice@gmail.com"
-           class="form-control"
-           id="email"/>
+           id="email"
+           ng-model="model.user.email"
+           class="form-control"/>
 
     <label for="dob">Date of Birth</label>
     <input name="dob"
@@ -61,18 +45,7 @@
        role="button">Unregister</a>
 
     <a class="btn btn-default btn-primary btn-block"
-       ng-click="model.updateUser()"
-       role="button">Update</a>
+       role="button"
+       ng-click=model.updateUser(model.user._id,model.user)>Update</a>
 
 </div>
-
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container-fluid">
-        <a href="../User/profile.html">
-            <span class="pull-right glyphicon glyphicon-user"></span>
-        </a>
-    </div>
-</nav>
-</body>
-
-</html>
