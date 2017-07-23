@@ -31,8 +31,8 @@
 
 
 console.log(user);
-            if(password !== password2) {
-                model.errorMessage = "Passwords don't match"
+            if(_user.password !== _user.password2) {
+                model.errorMessage = "Passwords don't match";
                 return;
             }
 

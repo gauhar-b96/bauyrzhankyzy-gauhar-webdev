@@ -23,12 +23,12 @@
                 model.errorMessage = "User not found";
                 return;
             }
-            user = userService.findUserbyUsernameAndPassword(user.username, user.password)
+            user = userService.findUserByUsernameAndPassword(user.username, user.password);
             if(user === null) {
                 model.errorMessage = "User not found";
             } else {
                 // navigates user to user's profile
-                $location.url("profile/"+user._id);
+                $location.url("profile/"+ user._id);
             }
         }
     }

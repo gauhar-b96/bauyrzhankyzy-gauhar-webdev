@@ -15,9 +15,11 @@
         model.unregister = unregister;
 
         function init(){
-            model.user = userService.findUserbyId(userId);
+            model.user = userService.findUserById(userId);
         }
         init();
+        
+
         /*
         function updateUser(user) {
             userService.updateUser(user._id, user)
@@ -28,7 +30,7 @@
             
         }
 
-        alert(userId);
+
     }
 })();
 
