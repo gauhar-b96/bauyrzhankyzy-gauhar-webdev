@@ -1,9 +1,9 @@
 (function () {
     angular
         .module("WamApp")
-        .controller("websiteListController", websiteListController);
+        .controller("websiteNewController", websiteNewController);
 
-    function websiteListController($routeParams, websiteService) {
+    function websiteNewController($routeParams, websiteService) {
         var model = this;
 
         // event handlers
@@ -28,7 +28,6 @@
             }
             return resultSet;
         }
-
 
     }
 })();

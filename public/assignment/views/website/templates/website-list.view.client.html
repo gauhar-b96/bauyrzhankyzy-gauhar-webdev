@@ -16,6 +16,25 @@
         <li class="list-group-item active">
             <div class="row">
                 <a href="../back_up(assignment2)/page-list.html">
+                    <div class="col-lg-4 col-md-7 col-sm-10 col-xs-10">Website Name</div>
+                </a>
+                <div class="col-lg-3 visible-lg">
+                    Created
+                </div>
+                <div class="col-md-3 hidden-sm hidden-xs">
+                    Updated
+                </div>
+                <div class="col-sm-2">
+                    <a href="#!/user/{{model.userId}}/website/new">
+                        <span class="pull-right glyphicon glyphicon-plus"></span>
+                    </a>
+                </div>
+            </div>
+        </li>
+<!-- Old styling, working list
+        <li class="list-group-item active">
+            <div class="row">
+                <a href="../back_up(assignment2)/page-list.html">
                     <div class="col-xs-10 col-sm-4">Website Name</div>
                 </a>
                 <div class="col-sm-4 hidden-xs">
@@ -23,25 +42,26 @@
                 </div>
                 <div class="col-sm-2 hidden-xs">Updated</div>
                 <div class="col-xs-2">
-                    <a href="../back_up(assignment2)/website-edit.html">
-                        <span class="pull-right glyphicon glyphicon-cog"></span>
+                    <a href="#!/user/{{model.userId}}/website/new">
+                        <span class="pull-right glyphicon glyphicon-plus"></span>
                     </a>
                 </div>
             </div>
         </li>
+        -->
 
         <li ng-repeat="website in model.websites" class="list-group-item">
             <div class="row">
                 <a href="../back_up(assignment2)/page-list.html">
-                    <div class="col-xs-10 col-sm-4">{{website.name}}</div>
+                    <div class="col-lg-4 col-md-7 col-sm-10 col-xs-10">{{website.name}}</div>
                 </a>
-                <div class="col-sm-4 hidden-xs">
+                <div class="col-lg-3 visible-lg">
                     {{website.created | date}}
                 </div>
-                <div class="col-sm-2 hidden-xs">
+                <div class="col-md-3 hidden-sm hidden-xs">
                     {{website.updated | date}}
                 </div>
-                <div class="col-xs-2">
+                <div class="col-sm-2">
                     <a href="../back_up(assignment2)/website-edit.html">
                         <span class="pull-right glyphicon glyphicon-cog"></span>
                     </a>

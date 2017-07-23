@@ -34,6 +34,11 @@
                 controller: "websiteListController",
                 controllerAs: "model"
             })
+            .when("/user/:userId/website/new", {
+                templateUrl: "views/website/templates/website-new.view.client.html",
+                controller: "websiteNewController",
+                controllerAs: "model"
+            })
     }
 })();
 

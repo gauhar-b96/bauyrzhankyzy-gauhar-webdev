@@ -23,8 +23,12 @@
         this.deleteWebsite = deleteWebsite;
 
         // implementation
+        //TODO: wrong function fix
         function createWebsite(userId, website) {
-
+            website.created = new Date();
+            website.updated = new Date();
+            website._id = (new Date()).getTime() + "";
+            websites.push(website);
         }
 
         function findWebsitesByUser(userId) {
@@ -38,15 +42,22 @@
         }
 
         function findWebsiteById (websiteId) {
-
+            return websites.find(function (website) {
+                return website._id === websiteId;
+            })
         }
 
+        // TODO
         function updateWebsite(websiteId, website) {
 
         }
 
         function deleteWebsite(websiteId) {
-
+            var website = websites.find(function (website) {
+                return website._id === websiteId;
+            });
+            var index = websites.indexOf(website);
+            websites.splice(index, 1);
         }
 
 
