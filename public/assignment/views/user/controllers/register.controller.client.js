@@ -19,23 +19,43 @@
         init();
 
         // implementation
+        /*   function registerUser(user) {
+         var _user = userService.findUserByUsername(user.username);
+         if (!_user) {
+         var user = userService.registerUser(user);
+         // navigates user to user's profile
+         $location.url("profile/" + user._id);
+         } else {
+         model.errorMessage = "User already exists";
+         return;
+         }
+
+
+         if( user.password !== user.password2) {
+         model.errorMessage = "Passwords don't match";
+         return;
+         }
+
+
+
+         }
+         */
+
         function registerUser(user) {
             var _user = userService.findUserByUsername(user.username);
             if (!_user) {
                 var user = userService.registerUser(user);
                 // navigates user to user's profile
-                $location.url("profile/" + user._id);
+                if( user.password !== user.password2) {
+                    model.errorMessage = "Passwords don't match";
+                    return;
+                } else {
+                    $location.url("profile/" + user._id);
+                }
             } else {
-                model.error = "User already exists";
-            }
-
-
-            if(_user.password !== _user.password2) {
-                model.errorMessage = "Passwords don't match";
+                model.errorMessage = "User already exists";
                 return;
             }
-
-
         }
     }
 })();

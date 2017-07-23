@@ -23,7 +23,7 @@
                 model.errorMessage = "User not found";
                 return;
             }*/
-            user = userService.findUserByUsernameAndPassword(user.username, user.password);
+            user = userService.findUserByCredentials(user.username, user.password);
             if(user === null) {
                 model.errorMessage = "User not found";
                 return;
