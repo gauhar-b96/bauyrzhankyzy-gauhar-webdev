@@ -1,0 +1,60 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+
+        <a href="../back_up(assignment2)/website-new.html">
+            <span class="pull-right glyphicon glyphicon-plus"></span></a>
+
+        <a class="navbar" href="../back_up(assignment2)/profile.html">
+            <span class="glyphicon glyphicon-chevron-left"></span>Websites</a>
+    </div>
+</nav>
+
+<div class="container-fluid">
+
+    <ul class="list-group">
+
+        <li class="list-group-item active">
+            <div class="row">
+                <a href="../back_up(assignment2)/page-list.html">
+                    <div class="col-xs-10 col-sm-4">Website Name</div>
+                </a>
+                <div class="col-sm-4 hidden-xs">
+                    Created
+                </div>
+                <div class="col-sm-2 hidden-xs">Updated</div>
+                <div class="col-xs-2">
+                    <a href="../back_up(assignment2)/website-edit.html">
+                        <span class="pull-right glyphicon glyphicon-cog"></span>
+                    </a>
+                </div>
+            </div>
+        </li>
+
+        <li ng-repeat="website in model.websites" class="list-group-item">
+            <div class="row">
+                <a href="../back_up(assignment2)/page-list.html">
+                    <div class="col-xs-10 col-sm-4">{{website.name}}</div>
+                </a>
+                <div class="col-sm-4 hidden-xs">
+                    {{website.created | date}}
+                </div>
+                <div class="col-sm-2 hidden-xs">
+                    {{website.updated | date}}
+                </div>
+                <div class="col-xs-2">
+                    <a href="../back_up(assignment2)/website-edit.html">
+                        <span class="pull-right glyphicon glyphicon-cog"></span>
+                    </a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <a href="../back_up(assignment2)/profile.html">
+            <span class="pull-right glyphicon glyphicon-user"></span>
+        </a>
+    </div>
+</nav>
