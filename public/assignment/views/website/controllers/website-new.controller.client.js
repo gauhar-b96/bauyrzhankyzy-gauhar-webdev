@@ -3,12 +3,12 @@
         .module("WamApp")
         .controller("websiteNewController", websiteNewController);
 
-    function websiteNewController($routeParams, websiteService) {
+    function websiteNewController($routeParams, $location, websiteService) {
         var model = this;
+        model.userId = $routeParams.userId;
 
         // event handlers
-        model.userId = $routeParams.userId;
-        model.findWebsitesByUser = findWebsitesByUser;
+        model.createWebsite = createWebsite;
 
 
         function init(){
@@ -17,17 +17,15 @@
 
         init();
 
-
         // implementation
-        function findWebsitesByUser(userId) {
-            var resultSet = [];
-            for(var w in model.websites) {
-                if(model.websites[w].developerId === userId) {
-                    resultSet.push(model.websites[w]);
-                }
-            }
-            return resultSet;
+        function createWebsite(website) {
+           // website.developerId = model.userId;
+          websiteService.createWebsite(website);
+          $location.url('/user/'+model.userId+'/website');
         }
+
+
+
 
     }
 })();

@@ -1,14 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Edit Website</title>
-    <!--  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/> -->
-    <link href="../../vendor/bootstrap/dist/css/bootstrap.min.css"
-          rel="stylesheet"/>
-    <link href="../css/styles.css" rel="stylesheet"/>
-</head>
-<body>
 
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
@@ -28,65 +17,62 @@
 
     <div class="row">
         <!--  <div class="col-xs-3 visible-lg split-view-left"> -->
-        <div class="col-sm-4 hidden-xs scrollable-left">
+        <div class="col-md-3 hidden-xs hidden-sm scrollable-left">
 
             <ul class="list-group">
 
-                <li class="list-group-item">
+                <li class="list-group-item active">
                     <div class="row">
-                        <div class="col-xs-10">
-                            <a href="../back_up(assignment2)/page-list.html">Wikipedia</a>
-                        </div>
-                        <div class="col-xs-2">
-                            <span class="pull-right glyphicon glyphicon-cog"></span>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10">Facebook</div>
-                        <div class="col-xs-2">
-                            <span class="pull-right glyphicon glyphicon-cog"></span>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10">Twitter</div>
-                        <div class="col-xs-2">
-                            <span class="pull-right glyphicon glyphicon-cog"></span>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10">Amazon</div>
-                        <div class="col-xs-2">
-                            <span class="pull-right glyphicon glyphicon-cog"></span>
+                        <a href="../back_up(assignment2)/page-list.html">
+                            <div class="col-lg-10 col-md-10 hidden-sm hidden-xs">Website Name</div>
+                        </a>
+
+                        <div class="col-md-2">
+                            <a href="#!/user/{{model.userId}}/website/new">
+                                <span class="pull-right glyphicon glyphicon-plus"></span>
+                            </a>
                         </div>
                     </div>
                 </li>
 
+                <li ng-repeat="website in model.websites" class="list-group-item">
+                    <div class="row">
+                        <a href="../back_up(assignment2)/page-list.html">
+                            <div class="col-lg-10 col-md-10 hidden-sm hidden-xs">{{website.name}}</div>
+                        </a>
+
+                        <div class="col-md-2">
+                            <a href="../back_up(assignment2)/website-edit.html">
+                                <span class="pull-right glyphicon glyphicon-cog"></span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
             </ul>
         </div>
 
         <!--  <div class="col-xs-12 col-lg-9 split-view-right"> -->
-        <div class="col-xs-12 col-sm-8 split-view-right">
+        <div class="col-xs-12 col-md-9 col-lg-9 split-view-right">
 
             <label for="name">Name</label>
             <input id="name"
-                   class="form-control"
-                   value="Facebook"/>
+                   ng-model="model.website.name"
+                   class="form-control"/>
 
             <label for="description">Description</label>
             <textarea id="description"
+                      ng-model="model.website.description"
                       rows="5"
-                      class="form-control">Social network that allows people to connect with each other
-            </textarea>
+                      class="form-control"></textarea>
 
-            <a class="btn btn-default btn-danger btn-block"
-               href="../back_up(assignment2)/website-list.html"
+            <a ng-click="model.updateWebsite(model.website)"
+               class="btn btn-default btn-success btn-block"
+               role="button">Update</a>
+
+            <a ng-click="model.deleteWebsite(model.websiteId)"
+               class="btn btn-default btn-danger btn-block"
                role="button">Delete</a>
+
         </div>
     </div>
 
@@ -100,6 +86,3 @@
         </a>
     </div>
 </nav>
-</body>
-
-</html>

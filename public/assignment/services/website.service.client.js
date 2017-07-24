@@ -24,8 +24,8 @@
 
         // implementation
         //TODO: wrong function fix
-        function createWebsite(userId, website) {
-            website.created = new Date();
+        function createWebsite(website) {
+           website.created = new Date();
             website.updated = new Date();
             website._id = (new Date()).getTime() + "";
             websites.push(website);
@@ -49,6 +49,13 @@
 
         // TODO
         function updateWebsite(websiteId, website) {
+            for (var w in websites) {
+                if (websites[w]._id === websiteId) {
+                    websites[w] = website;
+                    return;
+                }
+            }
+            return null;
 
         }
 

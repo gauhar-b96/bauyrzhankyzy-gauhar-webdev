@@ -17,18 +17,15 @@
 
         init();
 
-
-        // implementation
         function findWebsitesByUser(userId) {
-            var resultSet = [];
-            for(var w in model.websites) {
-                if(model.websites[w].developerId === userId) {
-                    resultSet.push(model.websites[w]);
+            var sites = [];
+            for(var w in websites) {
+                if(websites[w].developerId === userId) {
+                    sites.push(websites[w]);
                 }
             }
-            return resultSet;
+            return sites;
         }
-
 
     }
 })();
