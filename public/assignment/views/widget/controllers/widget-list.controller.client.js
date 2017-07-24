@@ -29,7 +29,7 @@
         // event handlers
         model.trustThisContent = trustThisContent;
         model.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
-
+        model.getWidgetUrlForType = getWidgetUrlForType;
         function init(){
 
         }
@@ -50,7 +50,9 @@
             return $sce.trustAsResourceUrl(embedUrl);
         }
 
-
+        function getWidgetUrlForType(type) {
+            return 'views/widget/templates/widget-'+type.toLowerCase()+'.view.client.html';
+        }
 
 
 

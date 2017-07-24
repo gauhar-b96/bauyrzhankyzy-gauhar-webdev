@@ -1,28 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Widget Edit</title>
-    <!--  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/> -->
-    <link href="../../vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../css/styles.css" rel="stylesheet"/>
-</head>
-<body>
-
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-
-        <a href="../back_up(assignment2)/widget-list.html">
-            <span class="pull-right glyphicon glyphicon-ok"></span></a>
-
-        <a class="navbar" href="../back_up(assignment2)/widget-list.html">
-            <span class="glyphicon glyphicon-chevron-left"></span>Widget Edit</a>
-
+<div ng-switch="width.size">
+        <h1 ng-switch-when="1">{{widget.text}}</h1>
+        <h2 ng-switch-when="2">{{widget.text}}</h2>
+        <h3 ng-switch-when="3">{{widget.text}}</h3>
+        <h4 ng-switch-when="4">{{widget.text}}</h4>
+        <h5 ng-switch-when="5">{{widget.text}}</h5>
+        <h6 ng-switch-when="6">{{widget.text}}</h6>
     </div>
-</nav>
-
-<div class="container-fluid">
-
+<!--
     <label for="name">Name</label>
     <input name="name"
            placeholder="Widget Name"
@@ -47,12 +31,5 @@
        href="../back_up(assignment2)/widget-list.html"
        role="button">Delete</a>
 </div>
+-->
 
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container-fluid">
-        <span class="pull-right glyphicon glyphicon-user"></span>
-    </div>
-</nav>
-
-</body>
-</html>

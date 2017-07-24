@@ -28,35 +28,16 @@
             <span class="glyphicon glyphicon-align-justify"></span>
         </div>
 
+        <div ng-include="model.getWidgetUrlForType(widget.widgetType)"></div>
         <div ng-switch="widget.widgetType" >
-            <div ng-switch-when="HEADING" ng-switch="width.size">
-                <h1 ng-switch-when="1">{{widget.text}}</h1>
-                <h2 ng-switch-when="2">{{widget.text}}</h2>
-                <h3 ng-switch-when="3">{{widget.text}}</h3>
-                <h4 ng-switch-when="4">{{widget.text}}</h4>
-                <h5 ng-switch-when="5">{{widget.text}}</h5>
-                <h6 ng-switch-when="6">{{widget.text}}</h6>
-            </div>
-
-            <div ng-switch-when="IMAGE">
-                <img ng-src="{{widget.url}}" width="{{widget.width}}"/>
-            </div>
-
             <div ng-switch-when="HTML"
                  ng-bind-html="model.trustThisContent(widget.text)">
-            </div>
-
-            <div ng-switch-when="YOUTUBE" >
-                <iframe src="{{model.getYouTubeEmbedUrl(widget.url)}}" frameborder="0" allowfullscreen></iframe>
             </div>
 
         </div>
     </div>
 
+    <div ng-inlcude="'views/common/footer.view.client.html'"></div>
+
 </div>
 
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container-fluid">
-        <span class="pull-right glyphicon glyphicon-user"></span>
-    </div>
-</nav>
