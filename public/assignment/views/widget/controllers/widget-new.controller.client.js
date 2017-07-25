@@ -1,9 +1,9 @@
 (function () {
     angular
         .module("WamApp")
-        .controller("widgetListController", widgetListController);
+        .controller("widgetNewController", widgetNewController);
 
-    function widgetListController($sce, widgetService) {
+    function widgetNewController($sce, widgetService) {
         var model = this;
 
 

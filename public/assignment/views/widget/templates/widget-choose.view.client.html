@@ -1,12 +1,14 @@
 <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
+    <div class="gb-navbar-style">
+        <div class="container-fluid">
 
-        <a href="../back_up(assignment2)/widget-list.html">
-            <span class="pull-right glyphicon glyphicon-ok"></span></a>
+            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
+                <span class="pull-right glyphicon glyphicon-ok"></span></a>
 
-        <a class="navbar" href="../back_up(assignment2)/widget-list.html">
-            <span class="glyphicon glyphicon-chevron-left"></span>Choose Widget</a>
-
+            <a class="navbar"
+               href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
+                <span class="glyphicon glyphicon-chevron-left"></span>Widgets</a>
+        </div>
     </div>
 </nav>
 
@@ -15,7 +17,7 @@
     <ul class="list-group">
 
         <li class="list-group-item">
-            <a href="../back_up(assignment2)/widget-heading.html">Header</a>
+            <a href="widgetHEADING.view.client.html">Header</a>
         </li>
 
 
@@ -30,11 +32,11 @@
         <li class="list-group-item">Button</li>
 
         <li class="list-group-item">
-            <a href="../back_up(assignment2)/widget-image.html">Image</a>
+            <a href="widgetIMAGE.view.client.html">Image</a>
         </li>
 
         <li class="list-group-item">
-            <a href="../back_up(assignment2)/widget-youtube.html">Youtube</a>
+            <a href="widgetYOUTUBE.view.client.html">Youtube</a>
         </li>
 
         <li class="list-group-item">Data Table</li>
@@ -44,8 +46,4 @@
     </ul>
 </div>
 
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container-fluid">
-        <span class="pull-right glyphicon glyphicon-user"></span>
-    </div>
-</nav>
+<div ng-include="'views/common/footer.view.client.html'"></div>

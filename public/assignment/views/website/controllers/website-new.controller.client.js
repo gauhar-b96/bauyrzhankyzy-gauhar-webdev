@@ -23,9 +23,5 @@
           websiteService.createWebsite(website);
           $location.url('/user/'+model.userId+'/website');
         }
-
-
-
-
     }
 })();
