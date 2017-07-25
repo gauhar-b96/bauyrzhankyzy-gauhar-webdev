@@ -23,6 +23,56 @@
         ]
 
         // event handlers
+        this.createWidget = createWidget;
+        this.findWidgetsByPageId = findWidgetsByPageId;
+        this.findWidgetById = findWidgetById;
+        this.updateWidget = updateWidget;
+        this.deleteWidget = deleteWidget;
+
+        // implementation
+        //TODO: wrong function fix
+        function createWidget(pageId, widget) {
+            widget.created = new Date();
+            widget.updated = new Date();
+            widget._id = (new Date()).getTime() + "";
+            widgets.push(widget);
+        }
+
+        function findWidgetsByPageId(pageId) {
+            var sites = [];
+            for(var w in widgets) {
+                if(widgets[w].developerId === userId) {
+                    sites.push(widgets[w]);
+                }
+            }
+            return sites;
+        }
+
+        function findWidgetById (widgetId) {
+            return widgets.find(function (widget) {
+                return widget._id === widgetId;
+            })
+        }
+
+        // TODO
+        function updateWidget(widgetId, widget) {
+            for (var w in widgets) {
+                if (widgets[w]._id === widgetId) {
+                    widgets[w] = widget;
+                    return;
+                }
+            }
+            return null;
+
+        }
+
+        function deleteWidget(widgetId) {
+            var widget = widgets.find(function (widget) {
+                return widget._id === widgetId;
+            });
+            var index = widgets.indexOf(widget);
+            widgets.splice(index, 1);
+        }
 
     }
 

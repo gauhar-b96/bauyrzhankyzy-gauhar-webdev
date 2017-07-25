@@ -1,19 +1,23 @@
 <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
+    <div class="gb-navbar-style">
 
-        <a href="#!/user/{{model.userId}}/website">
-            <span class="pull-right glyphicon glyphicon-ok"></span></a>
+        <div class="container-fluid">
 
-        <a class="navbar" href="#!/user/{{model.userId}}/website">
-            <span class="glyphicon glyphicon-chevron-left"></span>New Website</a>
+            <a href="#!/user/{{model.userId}}/website">
+                <span class="pull-right glyphicon glyphicon-ok"></span></a>
+
+            <a class="navbar" href="#!/user/{{model.userId}}">
+                <span class="glyphicon glyphicon-chevron-left"></span>New Website</a>
+        </div>
+
     </div>
 </nav>
 
 <div class="container-fluid">
 
     <div class="row">
-     <!--   <div class="col-sm-3 hidden-xs hidden-sm"> -->
-          <div class="col-md-3 hidden-xs hidden-sm">
+        <!--   <div class="col-sm-3 hidden-xs hidden-sm"> -->
+        <div class="col-md-3 hidden-xs hidden-sm">
             <ul class="list-group">
 
                 <li class="list-group-item active">
@@ -59,22 +63,16 @@
                       ng-model="website.description"
                       class="form-control"></textarea>
 
-            <a ng-click="model.createWebsite(model.user._id, model.website)"
-                    class="btn btn-default btn-success"
+            <a ng-click="model.createWebsite(model.userId, website)"
+               class="btn btn-block btn-success"
                role="button">Create</a>
 
-            <a class="btn btn-default btn-danger btn-block"
-               href="../back_up(assignment2)/website-list.html"
+            <a class="btn btn-danger btn-block"
+               href="#!/user/{{model.userId}}/website"
                role="button">Cancel</a>
         </div>
     </div>
 
 </div>
 
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container-fluid">
-        <a href="../back_up(assignment2)/profile.html">
-            <span class="pull-right glyphicon glyphicon-user"></span>
-        </a>
-    </div>
-</nav>
+<div ng-include="'views/common/footer.view.client.html'"></div>

@@ -51,7 +51,7 @@
         }
 
         function getWidgetUrlForType(type) {
-            return 'views/widget/templates/widget-'+type.toLowerCase()+'.view.client.html';
+            return 'views/widget/templates/widget-'+type.toLowerCase()+'.view.client.html'
         }
 
 

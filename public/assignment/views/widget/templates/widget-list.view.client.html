@@ -1,18 +1,14 @@
-<style>
-    p {
-        text-align: justify;
-    }
-</style>
-
 <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
+    <div class="gb-navbar-style">
+        <div class="container-fluid">
 
-        <a href="../back_up(assignment2)/widget-choose.html">
-            <span class="pull-right glyphicon glyphicon-plus"></span></a>
+            <a href="../back_up(assignment2)/widget-choose.html">
+                <span class="pull-right glyphicon glyphicon-plus"></span></a>
 
-        <a class="navbar" href="../back_up(assignment2)/page-list.html">
-            <span class="glyphicon glyphicon-chevron-left"></span>Widgets</a>
+            <a class="navbar" href="../back_up(assignment2)/page-list.html">
+                <span class="glyphicon glyphicon-chevron-left"></span>Widgets</a>
 
+        </div>
     </div>
 </nav>
 
@@ -28,16 +24,12 @@
             <span class="glyphicon glyphicon-align-justify"></span>
         </div>
 
+
+
         <div ng-include="model.getWidgetUrlForType(widget.widgetType)"></div>
-        <div ng-switch="widget.widgetType" >
-            <div ng-switch-when="HTML"
-                 ng-bind-html="model.trustThisContent(widget.text)">
-            </div>
 
-        </div>
     </div>
-
-    <div ng-inlcude="'views/common/footer.view.client.html'"></div>
-
 </div>
+
+<div ng-include="'views/common/footer.view.client.html'"></div>
 

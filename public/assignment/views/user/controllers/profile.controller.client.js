@@ -19,8 +19,8 @@
         }
         init();
 
-        function updateUser(user) {
-            userService.updateUser(user._id, user)
+        function updateUser(userId, user) {
+            userService.updateUser(userId, user)
         }
 
 

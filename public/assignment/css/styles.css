@@ -7,6 +7,36 @@ body {
     margin-bottom: 60px;
 }
 
+.gb-navbar-style {
+    height: 55px;
+    background-color: #337ab7;
+    border-color: #333;
+}
+
+.gb-navbar-style a {
+    color: white;
+}
+
+.gb-navbar-style .glyphicon-ok {
+    background-color: transparent;
+    background-image: none;
+    border: none;
+    color: white;
+    top: 25px;
+    right: 15px;
+}
+
+.gb-navbar-style .glyphicon-plus {
+    background-color: transparent;
+    background-image: none;
+    border: none;
+    color: white;
+    top: 25px;
+    right: 15px;
+}
+
+
+/**
 .navbar-default {
     height: 55px;
     background-color: #337ab7;
@@ -14,16 +44,17 @@ body {
 }
 
 .navbar-default .navbar-brand {
-    color: white;
+    color: #337ab7;
 }
 
 .navbar-default .navbar-nav>li>a {
-    color: white;
+    color: #337ab7;
 }
 
 .navbar span, .navbar a {
-    color: white;
+    color: #337ab7;
 }
+*/
 .scrollable-left {
     position: absolute;
     top: 50px;
@@ -75,7 +106,7 @@ body {
     right: 15px;
 }
 
-
+/**
 .glyphicon-plus, .glyphicon-ok {
     background-color: transparent;
     background-image: none;
@@ -84,6 +115,9 @@ body {
     top: 25px;
     right: 15px;
 }
+**/
+
+
 
 .gb-plus-glyph-position .glyphicon-plus {
     top: 3px;

@@ -18,8 +18,8 @@
         init();
 
         // implementation
-        function createWebsite(website) {
-           // website.developerId = model.userId;
+        function createWebsite(userId, website) {
+            website.developerId = userId;
           websiteService.createWebsite(website);
           $location.url('/user/'+model.userId+'/website');
         }
