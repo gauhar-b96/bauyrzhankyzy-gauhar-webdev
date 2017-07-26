@@ -20,9 +20,8 @@
 
         // implementation
         function createPage(websiteId, page) {
-            page.websiteId = websiteId;
-          pageService.createpage(page);
-          $location.url('/user/'+model.website+'/page');
+          pageService.createPage(websiteId, page);
+            $location.url('/user/'+model.userId+'/website/'+websiteId+'/page');
         }
 
 

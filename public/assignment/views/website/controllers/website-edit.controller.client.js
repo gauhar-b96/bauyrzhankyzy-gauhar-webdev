@@ -23,15 +23,12 @@
         // implementation
         function updateWebsite(website) {
             websiteService.updateWebsite(website._id, website);
+            $location.url('/user/'+model.userId+'/website');
         }
 
         function deleteWebsite(websiteId) {
             websiteService.deleteWebsite(websiteId);
             $location.url('/user/'+model.userId+'/website');
         }
-
-
-
-
     }
 })();

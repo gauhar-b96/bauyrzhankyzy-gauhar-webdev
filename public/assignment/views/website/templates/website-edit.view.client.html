@@ -37,12 +37,12 @@
 
                 <li ng-repeat="website in model.websites" class="list-group-item">
                     <div class="row">
-                        <a href="../back_up(assignment2)/page-list.html">
+                        <a href="#!/user/{{model.userId}}/website/{{website._id}}/page">
                             <div class="col-lg-10 col-md-10 hidden-sm hidden-xs">{{website.name}}</div>
                         </a>
 
                         <div class="col-md-2">
-                            <a href="../back_up(assignment2)/website-edit.html">
+                            <a href="#!/user/{{model.userId}}/website/{{website._id}}">
                                 <span class="pull-right glyphicon glyphicon-cog"></span>
                             </a>
                         </div>

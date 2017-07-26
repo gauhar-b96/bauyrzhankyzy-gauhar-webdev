@@ -14,7 +14,7 @@
 
 
         function init(){
-            model.pages = pageService.findPagesByUser(model.userId);
+            model.pages = pageService.findPageByWebsiteId(model.websiteId);
             model.page = pageService.findPageById(model.pageId);
         }
 
@@ -22,12 +22,15 @@
 
         // implementation
         function updatePage(pageId, page) {
-            pageService.updatePage(model.pageId, page);
+            var website_id = page.websiteId;
+            pageService.updatePage(pageId, page);
+            $location.url('/user/'+model.userId+'/website/'+website_id+'/page');
         }
 
         function deletePage(pageId) {
+            var websiteId = pageService.findPageById(pageId).websiteId;
             pageService.deletePage(pageId);
-            $location.url('/user/'+model.userId+'/page');
+            $location.url('/user/'+model.userId+'/website/'+websiteId+'/page');
         }
     }
 })();

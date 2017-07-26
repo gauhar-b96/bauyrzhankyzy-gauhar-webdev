@@ -3,8 +3,9 @@
 
         <div class="container-fluid">
 
-            <a href="#!/user/{{userId}}/website/{{model.websiteId}}/page">
+            <a ng-click="model.createPage(model.websiteId, page)">
                 <span class="pull-right glyphicon glyphicon-ok"></span></a>
+
 
             <a class="navbar" href="#!/user/{{userId}}/website/{{model.websiteId}}/page">
                 <span class="glyphicon glyphicon-chevron-left"></span>Pages</a>
@@ -17,12 +18,14 @@
 
     <label for="name">Name</label>
     <input name="name"
+           ng-model="page.name"
            placeholder="Page Name"
            class="form-control"
            id="name"/>
 
     <label for="title">Title</label>
     <input name="description"
+           ng-model="page.title"
               placeholder="Page Title"
               class="form-control"
               id="title">

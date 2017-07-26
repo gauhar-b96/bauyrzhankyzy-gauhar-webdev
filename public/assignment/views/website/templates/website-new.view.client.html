@@ -3,10 +3,10 @@
 
         <div class="container-fluid">
 
-            <a href="#!/user/{{model.userId}}/website">
+            <a ng-click="model.createWebsite(model.userId, website)">
                 <span class="pull-right glyphicon glyphicon-ok"></span></a>
 
-            <a class="navbar" href="#!/user/{{model.userId}}">
+            <a class="navbar" href="#!/user/{{model.userId}}/website">
                 <span class="glyphicon glyphicon-chevron-left"></span>New Website</a>
         </div>
 
@@ -22,7 +22,7 @@
 
                 <li class="list-group-item active">
                     <div class="row">
-                        <a href="../back_up(assignment2)/page-list.html">
+                        <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page">
                             <div class="col-lg-10 col-md-10 hidden-sm hidden-xs">Website Name</div>
                         </a>
 
@@ -36,7 +36,7 @@
 
                 <li ng-repeat="website in model.websites" class="list-group-item">
                     <div class="row">
-                        <a href="../back_up(assignment2)/page-list.html">
+                        <a href="#!/user/{{model.userId}}/website/{{website._id}}/page">
                             <div class="col-lg-10 col-md-10 hidden-sm hidden-xs">{{website.name}}</div>
                         </a>
 
