@@ -7,10 +7,15 @@ body {
     margin-bottom: 60px;
 }
 
+
 .gb-navbar-style {
     height: 55px;
     background-color: #337ab7;
     border-color: #333;
+}
+
+.gb-table-header a {
+    color: white
 }
 
 .gb-navbar-style a {

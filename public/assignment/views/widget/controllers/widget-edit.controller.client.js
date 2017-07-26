@@ -3,37 +3,43 @@
         .module("WamApp")
         .controller("widgetEditController", widgetEditController);
 
-    function widgetEditController($routeParams, $sce, widgetService) {
+    function widgetEditController($routeParams, $sce, $location, widgetService) {
         var model = this;
-        var pageId = $routeParams('pageId');
-
+        model.pageId = $routeParams["pageId"];
+        model.websiteId = $routeParams.websiteId;
+        model.userId = $routeParams.userId;
+        model.widgetId = $routeParams.widgetId;
 
         // event handlers
-        model.trustThisContent = trustThisContent;
-        model.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
-        model.getWidgetUrlForType = getWidgetUrlForType;
+        model.updateWidget = updateWidget;
+        model.deleteWidget = deleteWidget;
+
+        model.getWidgetEditUrlForType = getWidgetEditUrlForType;
+
         function init(){
-            model.websites = websiteService.findWidgetsByPageId(pageId);
+            model.widgets = widgetService.findWidgetsByPageId(model.pageId);
         }
 
         init();
 
         // implementation
-
-        function trustThisContent(html) {
-            return $sce.trustAsHtml(html);
+        function updateWidget(widgetId, widget) {
+            var pageid = widget.pageId;
+            var websiteid = pageService.findPageById(pageid).websiteId;
+            widgetService.updateWidget(widgetId, widget);
+            $location.url('/user/'+model.userId+'/website/'+websiteid+'/page'+pageid+'/widget');
         }
 
-        function getYouTubeEmbedUrl(youTubeLink) {
-            var embedUrl = 'https://www.youtube.com/embed/';
-            var youTubeLinkParts = youTubeLink.split('/');
-            var id = youTubeLinkParts[youTubeLinkParts.length - 1];
-            embedUrl += id;
-            return $sce.trustAsResourceUrl(embedUrl);
+        function deleteWidget(widgetId) {
+            var pageId = widgetService.findWidgetById(widgetId).pageId;
+            var websiteId = pageService.findPageById(pageId).websiteId;
+            widgetService.deleteWidget(widgetId);
+            $location.url('/user/'+model.userId+'/website/'+websiteId+'/page'+pageId+'/widget');
         }
 
-        function getWidgetUrlForType(type) {
-            return 'views/widget/templates/widget-'+type.toLowerCase()+'.view.client.html';
+
+        function getWidgetEditUrlForType(type) {
+            return 'views/widget/templates/widget-'+type.toLowerCase()+'-edit.view.client.html';
         }
     }
 })();

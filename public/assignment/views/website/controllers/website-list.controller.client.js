@@ -8,7 +8,7 @@
 
         // event handlers
         model.userId = $routeParams.userId;
-        model.findWebsitesByUser = findWebsitesByUser;
+   //     model.findWebsitesByUser = findWebsitesByUser;
 
 
         function init(){
@@ -16,7 +16,7 @@
         }
 
         init();
-
+/*
         function findWebsitesByUser(userId) {
             var sites = [];
             for(var w in websites) {
@@ -26,6 +26,6 @@
             }
             return sites;
         }
-
+*/
     }
 })();

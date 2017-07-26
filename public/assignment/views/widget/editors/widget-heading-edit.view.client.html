@@ -1,26 +1,31 @@
 
 <label for="name">Name</label>
 <input name="name"
-       placeholder="Widget Name"
+       ng-model="model.widget.name"
        class="form-control"
        id="name"/>
 
 <label for="text">Text</label>
 <input name="text"
-       value="US Senate Reaches Compromise"
+       ng-model="model.widget.text"
        class="form-control"
        id="text">
 </input>
 
 <label for="size">Size</label>
 <input name="size"
-       value="3"
+       ng-model="model.widget.size"
        class="form-control"
        id="size">
 </input>
 
-<a class="btn btn-default btn-danger btn-block"
-   href="../back_up(assignment2)/widget-list.html"
+<a class="btn btn-success btn-block"
+   ng-click="model.createWidget(model.pageId, model.widget)"
+   role="button">Create</a>
+</div>
+
+<a class="btn btn-danger btn-block"
+   ng-click="model.deleteWidget(model.widgetId)"
    role="button">Delete</a>
 </div>
 

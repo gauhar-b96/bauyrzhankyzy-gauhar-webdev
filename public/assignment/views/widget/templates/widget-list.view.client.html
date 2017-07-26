@@ -2,10 +2,10 @@
     <div class="gb-navbar-style">
         <div class="container-fluid">
 
-            <a href="../back_up(assignment2)/widget-choose.html">
+            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new">
                 <span class="pull-right glyphicon glyphicon-plus"></span></a>
 
-            <a class="navbar" href="../back_up(assignment2)/page-list.html">
+            <a class=navbar href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page">
                 <span class="glyphicon glyphicon-chevron-left"></span>Widgets</a>
 
         </div>
@@ -18,18 +18,21 @@
          class="wd-widget">
         <!-- wd-toolbar: allows to position toolbar on the widgets -->
         <div class="wd-toolbar">
-            <a href="../back_up(assignment2)/widget-heading.html">
+            <a ng-model-options="widget.widgetType in model.widgets"
+                    href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
                 <span class="glyphicon glyphicon-cog"></span>
             </a>
             <span class="glyphicon glyphicon-align-justify"></span>
         </div>
 
-
-
         <div ng-include="model.getWidgetUrlForType(widget.widgetType)"></div>
-
     </div>
 </div>
 
 <div ng-include="'views/common/footer.view.client.html'"></div>
 
+<!-- ng-include="'#!/user/'+model.userId+'/website/'+model.websiteId+'/page/'
+            +model.pageId+'/widget/'+widget._id+'/'+'widget-'+widget.widgetType.toLowerCase()+'-edit.view.client.html'"
+-->
+<!-- ng-include="model.getWidgetEditUrlForType(widget.widgetType)" -->
+<!-- href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}"> -->

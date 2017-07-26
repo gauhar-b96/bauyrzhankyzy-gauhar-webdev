@@ -2,7 +2,6 @@
     <div class="gb-navbar-style">
 
         <div class="container-fluid">
-
             <a href="#!/user/{{model.userId}}/website/new">
                 <span class="pull-right glyphicon glyphicon-ok"></span></a>
 
@@ -18,8 +17,9 @@
     <ul class="list-group">
 
         <li class="list-group-item active">
+            <div class="gb-table-header">
             <div class="row">
-                <a href="../back_up(assignment2)/page-list.html">
+                <a>
                     <div class="col-lg-4 col-md-7 col-sm-10 col-xs-10">Website Name</div>
                 </a>
                 <div class="col-lg-3 visible-lg">
@@ -34,6 +34,7 @@
                     </a>
                 </div>
             </div>
+</div>
         </li>
 
         <li ng-repeat="website in model.websites" class="list-group-item">

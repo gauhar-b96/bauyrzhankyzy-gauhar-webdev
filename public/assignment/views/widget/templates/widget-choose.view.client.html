@@ -17,9 +17,9 @@
     <ul class="list-group">
 
         <li class="list-group-item">
-            <a href="widgetHEADING.view.client.html">Header</a>
+            <a ng-switch="HEADING"
+               href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/">Header</a>
         </li>
-
 
         <li class="list-group-item">Label</li>
 
@@ -32,11 +32,13 @@
         <li class="list-group-item">Button</li>
 
         <li class="list-group-item">
-            <a href="widgetIMAGE.view.client.html">Image</a>
+            <a ng-switch="IMAGE"
+               href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/">Image</a>
         </li>
 
         <li class="list-group-item">
-            <a href="widgetYOUTUBE.view.client.html">Youtube</a>
+            <a ng-switch="YOUTUBE"
+               href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/">Youtube</a>
         </li>
 
         <li class="list-group-item">Data Table</li>

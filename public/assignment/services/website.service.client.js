@@ -23,7 +23,6 @@
         this.deleteWebsite = deleteWebsite;
 
         // implementation
-        //TODO: wrong function fix
         function createWebsite(website) {
            website.created = new Date();
             website.updated = new Date();
@@ -47,7 +46,7 @@
             })
         }
 
-        // TODO
+
         function updateWebsite(websiteId, website) {
             for (var w in websites) {
                 if (websites[w]._id === websiteId) {
