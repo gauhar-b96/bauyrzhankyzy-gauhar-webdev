@@ -8,7 +8,7 @@
         model.pageId = $routeParams["pageId"];
         model.websiteId = $routeParams.websiteId;
         model.userId = $routeParams.userId;
-        model.widgetId = $routeParams.widgetId;
+        model.widgetId = model.pageId;
 
         model.getWidgetEditUrlForType = getWidgetEditUrlForType;
 
@@ -23,8 +23,8 @@
 
         // implementation
         function createWidget(pageId, widget) {
-            websiteService.createWidget(pageId, widget);
-            $location.url('/user/'+model.userId+'/website');
+            widgetService.createWidget(pageId, widget);
+            $location.url('/user/'+model.userId+'/website/'+websiteId+'/page'+pageId+'/widget');
         }
 
 

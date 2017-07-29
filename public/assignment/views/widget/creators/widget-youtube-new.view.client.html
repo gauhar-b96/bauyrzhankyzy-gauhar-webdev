@@ -7,10 +7,10 @@
 
             <a class="navbar"
                href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
-                <span class="glyphicon glyphicon-chevron-left"></span>Image Widget Editing/Creating</a>
+                <span class="glyphicon glyphicon-chevron-left"></span>New Youtube Widget</a>
         </div>
     </div>
-</nav>
+</nav>>
 
 <div class="container-fluid">
 
@@ -24,13 +24,12 @@
     <input name="text"
            placeholder="Type in text"
            class="form-control"
-           id="text">
-    </input>
+           id="text"/>
 
 
     <label for="url">URL</label>
     <input name="url"
-           value="https://some-website.com/image"
+           value="https://www.youtube.com/watch?v=f6NjClxO1pk"
            class="form-control"
            id="url"/>
 
@@ -40,18 +39,10 @@
            class="form-control"
            id="percentage"/>
 
-    <label for="file">Upload</label>
-    <input type="file"
-           class="form-control"
-           id="file"/>
-
     <a class="btn btn-default btn-success btn-block"
        ng-click="model.createWidget(model.pageId, model.widget)"
        role="button">Upload Image</a>
 
-    <a class="btn btn-default btn-danger btn-block"
-       ng-click="model.deleteWidget(model.widgetId)"
-       role="button">Delete</a>
 </div>
 
 

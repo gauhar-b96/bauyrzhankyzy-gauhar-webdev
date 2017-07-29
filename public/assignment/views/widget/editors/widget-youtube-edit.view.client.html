@@ -1,14 +1,16 @@
 <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
+    <div class="gb-navbar-style">
+        <div class="container-fluid">
 
-        <a href="../back_up(assignment2)/widget-list.html">
-            <span class="pull-right glyphicon glyphicon-ok"></span></a>
+            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
+                <span class="pull-right glyphicon glyphicon-ok"></span></a>
 
-        <a class="navbar" href="../back_up(assignment2)/widget-list.html">
-            <span class="glyphicon glyphicon-chevron-left"></span>Widget Edit</a>
-
+            <a class="navbar"
+               href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
+                <span class="glyphicon glyphicon-chevron-left"></span>Youtube Widget Editing/Creating</a>
+        </div>
     </div>
-</nav>
+</nav>>
 
 <div class="container-fluid">
 
@@ -22,8 +24,7 @@
     <input name="text"
            placeholder="Type in text"
            class="form-control"
-           id="text">
-    </input>
+           id="text"/>
 
 
     <label for="url">URL</label>
@@ -36,16 +37,16 @@
     <input name="percentage"
            value="100%"
            class="form-control"
-           id="percentage">
-    </input>
+           id="percentage"/>
+
+    <a class="btn btn-default btn-success btn-block"
+       ng-click="model.createWidget(model.pageId, model.widget)"
+       role="button">Upload Image</a>
 
     <a class="btn btn-default btn-danger btn-block"
-       href="../back_up(assignment2)/widget-list.html"
+       ng-click="model.deleteWidget(model.widgetId)"
        role="button">Delete</a>
 </div>
 
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container-fluid">
-        <span class="pull-right glyphicon glyphicon-user"></span>
-    </div>
-</nav>
+
+<div ng-include="'views/common/footer.view.client.html'"></div>

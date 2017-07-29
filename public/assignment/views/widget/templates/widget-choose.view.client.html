@@ -7,18 +7,19 @@
 
             <a class="navbar"
                href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
-                <span class="glyphicon glyphicon-chevron-left"></span>Widgets</a>
+                <span class="glyphicon glyphicon-chevron-left"></span>Choose Widgets</a>
         </div>
     </div>
 </nav>
+
+{{model.widgetId}}
 
 <div class="container-fluid">
 
     <ul class="list-group">
 
         <li class="list-group-item">
-            <a ng-switch="HEADING"
-               href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/">Header</a>
+            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new">Header</a>
         </li>
 
         <li class="list-group-item">Label</li>
@@ -32,13 +33,12 @@
         <li class="list-group-item">Button</li>
 
         <li class="list-group-item">
-            <a ng-switch="IMAGE"
-               href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/">Image</a>
+            <a ng-click="'views/widget/editors/widget-image-edit.view.client.html'">Image</a>
         </li>
 
         <li class="list-group-item">
             <a ng-switch="YOUTUBE"
-               href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/">Youtube</a>
+               href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">Youtube</a>
         </li>
 
         <li class="list-group-item">Data Table</li>

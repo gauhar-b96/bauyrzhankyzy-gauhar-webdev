@@ -71,7 +71,7 @@
                 controller: "widgetNewController",
                 controllerAs: "model"
             })
-            .when("/user/:userId/website/:websiteId/page/:pageId/widget/:wgId", {
+            .when("/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId", {
                 templateUrl: "views/widget/templates/widget-edit.view.client.html",
                 controller: "widgetEditController",
                 controllerAs: "model"
