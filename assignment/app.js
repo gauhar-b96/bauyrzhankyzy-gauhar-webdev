@@ -12,16 +12,27 @@ var users = [
 // http handlers
 app.get('/api/users', getAllUsers);
 app.get('/api/user/:userId', findUserById);
-app.get('/api/user', findUserByCredentials);
+app.get('/api/user', findUser);
 
-function findUserByCredentials(req, response) {
+function findUser(req, response) {
     var username = req.query.username;
     var password = req.query.password;
-    for (var u in users) {
-        var _user = users [u]
-        if (_user.username === username && _user.password === password) {
-            response.send(_user);
-            return;
+
+    if (username && password) {
+        for (var u in users) {
+            var _user = users [u];
+            if (_user.username === username &&
+                _user.password === password) {
+                response.send(_user);
+                return;
+            }
+        }
+    } else if(username) {
+        for (var u in users) {
+            if (users[u].username === username) {
+                response.send(users[u]);
+                return;
+            }
         }
     }
     response.send("0");
