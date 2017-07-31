@@ -1,6 +1,3 @@
-/**
- * Created by gauharbauyrzhankyzy on 7/22/17.
- */
 (function () {
     angular
         .module("WamApp")
@@ -18,30 +15,19 @@
 
         // implementation
         function registerUser(user) {
-            var promise = userService.findUser(user.username);
-
+            userService.findUserByUsername(user.username)
+                .then(function (response) {
+                    var _user = response.data;
+                    if (_user === "0") {
+                        return userService.registerUser(user)
+                    } else {
+                        model.error = "Username already exists";
+                    }
+                })
+                .then(function (response) {
+                    _user = response.data;
+                    $location.url("user/" + _user._id);
+                });
         }
-
-
-            /*
-            if( user.password !== user.password2) {
-                model.error = "Passwords must match";
-                return;
-            }
-
-            var found = userService.findUserByUsername(user.username);
-
-            if (!found) {
-                var newUser = userService.registerUser(user);
-                // navigates user to user's profile
-                $location.url("user/" + newUser._id);
-            }
-             else {
-                model.error = "Username already exists";
-                return;
-            }
-        }
-        */
-
     }
 })();

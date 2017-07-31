@@ -14,14 +14,24 @@
         // event handlers
         model.updateUser = updateUser;
         model.deleteUser = deleteUser;
-
-        userService
-            .findUserById(userId)
-            .then(renderUser);
-
-        function renderUser (user) {
-            model.user = user;
+        function init() {
+            userService
+                .findUserById(userId)
+                .then(function (response) {
+                    model.user = response.data;
+                });
         }
+        init();
+
+        /*
+         userService
+         .findUserById(userId)
+         .then(renderUser);
+
+         function renderUser (user) {
+         model.user = user;
+         }
+         */
 
         function updateUser(userId, user) {
             userService.updateUser(userId, user)
