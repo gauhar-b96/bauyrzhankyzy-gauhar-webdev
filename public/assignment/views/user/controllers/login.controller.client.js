@@ -7,52 +7,33 @@
         .module("WamApp")
         .controller("loginController", loginController);
 
-    function loginController($location, userService) {
+    function loginController($location, userService, $rootScope) {
         var model = this;
 
-
+        // event handlers
         model.login = login;
 
-        function init() {
+        function init(){
         }
-
         init();
 
-
         function login(user) {
-            /**   if(!user) {
-         model.errorMessage = "User not found";
-         return;
-         }*/
-
-            user = userService.findUserByCredentials(user.username, user.password);
-            if(user === null) {
-                model.error = "User not found";
+            if(!user) {
+                model.errorMessage = "User not found";
                 return;
-            } else {
-                // navigates user to user's profile
-                $location.url("user/"+ user._id);
             }
+            var promise = userService.findUserByCredentials(user.username, user.password);
+            promise
+                .then(function (response) {
+                    user = response.data;
+                    if (user === null) {
+                        model.message = "Username" + username + "not found";
+                    } else {
+                        $rootScope.currentUser = user;
+                        $location.url('/user/'+ user._id);
+                    }
+                });
         }
-
-        /* need fixing
-         function login(user) {
-
-         var found = userService.findUserByCredentials(user.username, user.password);
-         var exist = userService.findUserByUsername(user.username);
-         if (exist === null) {
-         model.error = "User not found";
-         return;
-         } else {
-         if (user.password !== found.password) {
-         model.error = "Passwords don't match, please try again"
-         } else{
-         // navigates user to user's profile
-         $location.url("user/" + user._id);
-         }
-         }
-         }
-         */
     }
 })();
 

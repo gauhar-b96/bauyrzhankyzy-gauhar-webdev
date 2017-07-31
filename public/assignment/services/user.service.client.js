@@ -3,7 +3,7 @@
         .module("WamApp")
         .factory("userService", userService);
 
-    function userService() {
+    function userService($http) {
         var users = [
             {_id: "123", username: "alice", password: "alice", firstName: "Alice", lastName: "Wonder", isAdmin: true},
             {_id: "234", username: "bob", password: "bob", firstName: "Bob", lastName: "Marley"},
@@ -30,12 +30,13 @@
         }
 
         function findUserById(userId) {
-            for (var u in users) {
-                if (users[u]._id === userId) {
-                    return users[u];
-                }
-            }
-            return null;
+            return $http.get("/api/user/" + userId);
+            /*var url = "/api/user/" + userId;
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
+                */
         }
 
         function findUserByUsername(username) {
@@ -48,15 +49,17 @@
         }
 
         function findUserByCredentials(username, password) {
-            for (var u in users) {
-                var _user = users[u];
-                if (_user.username === username
-                    && _user.password === password) {
-                    return _user;
-                }
-            }
-            return null;
+            var url ="/api/user?username=" + username + "&password" + password;
+            return $http.get(url);
+
+
         }
+       /**     var url = "/api/user?username=" + username + "&password=" + password;
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        } */
 
         function updateUser(userId, user) {
             for (var u in users) {

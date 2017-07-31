@@ -11,13 +11,17 @@
         var model = this;
         var userId = $routeParams["userId"];
 
+        // event handlers
         model.updateUser = updateUser;
         model.deleteUser = deleteUser;
 
-        function init(){
-            model.user = userService.findUserById(userId);
+        userService
+            .findUserById(userId)
+            .then(renderUser);
+
+        function renderUser (user) {
+            model.user = user;
         }
-        init();
 
         function updateUser(userId, user) {
             userService.updateUser(userId, user)
@@ -27,8 +31,6 @@
         function deleteUser(userId) {
             userService.deleteUser(userId);
         }
-
-
     }
 })();
 
