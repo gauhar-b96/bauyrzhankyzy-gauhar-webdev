@@ -17,8 +17,19 @@
         model.getWidgetEditUrlForType = getWidgetEditUrlForType;
 
         function init(){
-            model.widgets = widgetService.findWidgetsByPageId(model.pageId);
-            model.widget  = widgetService.findWidgetById(model.widgetId);
+         //   model.widgets = widgetService.findWidgetsByPageId(model.pageId);
+         //   model.widget  = widgetService.findWidgetById(model.widgetId);
+            widgetService
+                .findWidgetsByPageId(model.pageId)
+                .then(function (widgets) {
+                    model.widgets = widgets;
+                });
+
+            widgetService
+                .findWidgetById(model.widgetId)
+                .then(function (response) {
+                    model.widget = response.data;
+                });
         }
 
         init();

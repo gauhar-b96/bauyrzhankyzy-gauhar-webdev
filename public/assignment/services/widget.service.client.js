@@ -3,7 +3,7 @@
         .module("WamApp")
         .service("widgetService", widgetService);
 
-    function widgetService() {
+    function widgetService($http) {
 
         // array that represents local data for the widgets
         var widgets = [
@@ -23,6 +23,10 @@
         this.updateWidget = updateWidget;
         this.deleteWidget = deleteWidget;
 
+        function init() {
+
+        }
+
         // implementation
         function createWidget(pageId, widget) {
             widget.pageId = pageId;
@@ -30,6 +34,15 @@
             widgets.push(widget);
         }
 
+        function findWidgetsByPageId(pageId) {
+            var url = "/api/assignment/page/" + pageId + "/widget";
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+        /*
         function findWidgetsByPageId(pageId) {
             var sites = [];
             for(var w in widgets) {
@@ -39,13 +52,21 @@
             }
             return sites;
         }
+        */
 
+        function findWidgetById (widgetId) {
+        //    var url = "/api/assignment/user/" + userId + "/website" +websiteId + "/page/" + pageId + "/widget" + widgetId;
+            var url = "/api/assignment/page/" + pageId + "/widget" + widgetId;
+            return $http.get(url);
+        }
+
+        /*
         function findWidgetById (widgetId) {
             return widgets.find(function (widget) {
                 return widget._id === widgetId;
             })
         }
-
+*/
         function updateWidget(widgetId, widget) {
             for (var w in widgets) {
                 if (widgets[w]._id === widgetId) {

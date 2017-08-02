@@ -18,13 +18,14 @@
          class="wd-widget">
         <!-- wd-toolbar: allows to position toolbar on the widgets -->
         <div class="wd-toolbar">
-            <a ng-model-options="widget.widgetType in model.widgets"
-                    href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
+     <!--   <a ng-model-options="widget.widgetType in model.widgets" -->
+            <a ng-model-options="widget.widgetType"
+            href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
                 <span class="glyphicon glyphicon-cog"></span>
             </a>
             <span class="glyphicon glyphicon-align-justify"></span>
         </div>
-
+{{model.widget.widgetType}}
         <div ng-include="model.getWidgetUrlForType(widget.widgetType)"></div>
     </div>
 </div>
