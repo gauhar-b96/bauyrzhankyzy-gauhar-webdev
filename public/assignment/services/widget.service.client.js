@@ -28,12 +28,19 @@
         }
 
         // implementation
+
+        function createWidget(pageId, widget) {
+            var url = "/api/assignment/page/" + pageId + "/widget";
+            return $http.post(url, widget);
+        }
+
+        /*
         function createWidget(pageId, widget) {
             widget.pageId = pageId;
             widget._id = (new Date()).getTime() + "";
             widgets.push(widget);
         }
-
+*/
         function findWidgetsByPageId(pageId) {
             var url = "/api/assignment/page/" + pageId + "/widget";
             return $http.get(url)

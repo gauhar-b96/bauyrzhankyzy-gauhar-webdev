@@ -16,6 +16,16 @@ app.post ("/api/assignment/uploads", upload.single('myFile'), uploadImage);
 // identical to findAllWidgetsForPage
 app.get('/api/assignment/page/:pageId/widget', findWidgetsByPageId);
 app.get('/api/assignment/page/:pageId/widget/:widgetId', findWidgetById);
+app.post("/api/assignment/page/:pageId/widget", createWidget);
+
+function createWidget(req, response) {
+    var widget = req.body;
+    var pageId = req.params.pageId;
+    widget.pageId = pageId;
+    widget._id = (new Date()).getTime() + "";
+    widgets.push(widget);
+    response.json(widgets);
+}
 
 function findWidgetById(req, response) {
     for (var w in widgets) {
