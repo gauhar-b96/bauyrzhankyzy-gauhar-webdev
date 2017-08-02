@@ -12,6 +12,16 @@ var websites = [
 
 app.get("/api/assignment/user/:userId/website", findWebsitesByUser);
 app.post("/api/assignment/user/:userId/website", createWebsite);
+app.get("/api/assignment/user/:userId/website/:websiteId", findWebsiteById);
+
+function findWebsiteById(req, response) {
+    for (var w in websites) {
+        if (websites[w]._id === req.params.websiteId) {
+            response.json(websites[w]);
+        }
+    }
+    response.sendStatus(404);
+}
 
 function findWebsitesByUser(req, response) {
     var userId = req.params.userId;

@@ -54,13 +54,18 @@
             return sites;
         }
 */
+        function findWebsiteById (userId, websiteId) {
+            var url = "/api/assignment/user/" + userId + "/website/" + websiteId;
+            return $http.get(url);
+        }
+            /*
         function findWebsiteById (websiteId) {
             return websites.find(function (website) {
                 return website._id === websiteId;
             })
         }
 
-
+*/
         function updateWebsite(websiteId, website) {
             for (var w in websites) {
                 if (websites[w]._id === websiteId) {
