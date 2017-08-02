@@ -33,12 +33,12 @@
          }
          */
 
+
         function updateUser(userId, user) {
             userService.updateUser(userId, user)
         }
 
-
-        function deleteUser(userId) {
+      function deleteUser(userId) {
             userService.deleteUser(userId);
         }
     }
