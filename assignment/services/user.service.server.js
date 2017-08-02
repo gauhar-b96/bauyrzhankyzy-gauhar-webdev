@@ -13,6 +13,18 @@ app.get('/api/assignment/user/:userId', findUserById);
 app.get('/api/assignment/user', findUser);
 app.post('/api/assignment/user', registerUser);
 app.put('/api/assignment/user/:userId', updateUser);
+app.delete('/api/assignment/user/:userId', deleteUser);
+
+function deleteUser(req, response) {
+    var userId = req.params.userId;
+    var user = users.find(function user() {
+        return user._id === userId;
+    });
+    var index = users.indexOf(user);
+    users.splice(index, 1);
+    response.sendStatus(200);
+}
+
 
 function updateUser(req, response) {
     var userId = req.params.userId;
@@ -21,7 +33,7 @@ function updateUser(req, response) {
     for (var u in users) {
         if (users[u]._id === userId) {
             users[u] = user;
-        //    response.send(user);
+            //    response.send(user);
             response.sendStatus(200);
             return;
         }

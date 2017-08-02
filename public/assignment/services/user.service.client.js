@@ -4,13 +4,6 @@
         .factory("userService", userService);
 
     function userService($http) {
-        var users = [
-            {_id: "123", username: "alice", password: "alice", firstName: "Alice", lastName: "Wonder", isAdmin: true},
-            {_id: "234", username: "bob", password: "bob", firstName: "Bob", lastName: "Marley"},
-            {_id: "345", username: "charly", password: "charly", firstName: "Charly", lastName: "Garcia"},
-            {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose", lastName: "Annunzi"}
-        ]
-
 
         var api = {
             "registerUser": registerUser,
@@ -70,7 +63,7 @@
             return $http.put(url, user)
                 .then(function (response) {
                     return response.data;
-                })
+                });
        }
            /*
             for (var u in users) {
@@ -82,12 +75,21 @@
             return null;
         }
 */
-        function deleteUser(userId) {
+    /*    function deleteUser(userId) {
             var user = users.find(function user() {
                 return user._id === userId;
             });
             var index = users.indexOf(user);
             users.splice(index, 1);
+        }
+        */
+
+        function deleteUser(userId) {
+            var url = "/api/assignment/user/" + userId;
+            return $http.delete(url)
+                .then(function (response) {
+                    return response.data;
+                });
         }
     }
 
