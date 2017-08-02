@@ -33,10 +33,20 @@
          }
          */
 
-
+/*
         function updateUser(userId, user) {
-            userService.updateUser(userId, user)
+            userService.updateUser(userId, user);
         }
+
+*/
+        function updateUser(user) {
+            userService
+                .updateUser(user._id, user)
+                .then(function() {
+                    model.message = "User updated successfully";
+                });
+        }
+
 
       function deleteUser(userId) {
             userService.deleteUser(userId);

@@ -21,7 +21,8 @@ function updateUser(req, response) {
     for (var u in users) {
         if (users[u]._id === userId) {
             users[u] = user;
-            response.send(user);
+        //    response.send(user);
+            response.sendStatus(200);
             return;
         }
     }

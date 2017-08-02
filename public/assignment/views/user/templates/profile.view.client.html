@@ -12,8 +12,12 @@
     </div>
 </nav>
 
+
 <div class="container-fluid">
 
+    <div ng-show="model.message" class="alert alert-info">
+        {{model.message}}
+    </div>
     <label for="firstName">First Name</label>
     <input name="firstName"
            ng-model="model.user.firstName"
@@ -60,7 +64,7 @@
 
     <a class="btn btn-default btn-primary btn-block"
        role="button"
-       ng-click=model.updateUser(model.user._id,model.user)>Update</a>
+       ng-click=model.updateUser(model.user)>Update</a>
 
 </div>
 
