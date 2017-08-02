@@ -30,9 +30,12 @@
         }
         */
         function createWebsite(userId, website) {
-            website.developerId = userId;
+            userId = model.userId;
             websiteService
-                .createWebsite(website);
+                .createWebsite(userId, website)
+                .then(function() {
+                   $location.url("user/" + userId +"/website")
+                });
         }
     }
 })();

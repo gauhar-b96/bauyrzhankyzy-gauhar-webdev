@@ -24,7 +24,7 @@
 
         // implementation
 
-        function createWebsite(website, userId) {
+        function createWebsite(userId, website) {
             var url = "/api/assignment/user/" + userId + "/website";
             return $http.post(url, website);
         }

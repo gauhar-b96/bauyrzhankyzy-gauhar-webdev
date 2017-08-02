@@ -35,6 +35,8 @@ function registerUser(req, response) {
     response.send(user);
 }
 
+// findUser is a combination of findUserByCredentials and findUserByUsername
+// due to the shared API
 function findUser(req, response) {
     var username = req.query.username;
     var password = req.query.password;

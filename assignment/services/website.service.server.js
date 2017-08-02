@@ -11,6 +11,7 @@ var websites = [
 ];
 
 app.get("/api/assignment/user/:userId/website", findWebsitesByUser);
+app.post("/api/assignment/user/:userId/website", createWebsite);
 
 function findWebsitesByUser(req, response) {
     var userId = req.params.userId;
@@ -21,4 +22,15 @@ function findWebsitesByUser(req, response) {
         }
     }
     response.send(sites);
+}
+
+function createWebsite(req, response) {
+    var website = req.body;
+    var userId = req.params.userId;
+    website.developerId = userId;
+    website.created = new Date();
+    website.updated = new Date();
+    website._id = (new Date()).getTime() + "";
+    websites.push(website);
+    response.json(websites);
 }
