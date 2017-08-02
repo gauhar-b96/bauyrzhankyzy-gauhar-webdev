@@ -66,6 +66,17 @@
         }
 
 */
+
+        function updateWebsite(websiteId, website) {
+            var url = "/api/assignment/website/" + websiteId;
+            return $http.put(url, website)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+            /*
+
         function updateWebsite(websiteId, website) {
             for (var w in websites) {
                 if (websites[w]._id === websiteId) {
@@ -74,9 +85,17 @@
                 }
             }
             return null;
-
         }
+        */
 
+        function deleteWebsite(websiteId) {
+            var url = "/api/assignment/website/" + websiteId;
+            return $http.delete(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+     /*
         function deleteWebsite(websiteId) {
             var website = websites.find(function (website) {
                 return website._id === websiteId;
@@ -84,6 +103,7 @@
             var index = websites.indexOf(website);
             websites.splice(index, 1);
         }
+        */
     }
 
 })();
