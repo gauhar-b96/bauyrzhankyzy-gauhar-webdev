@@ -27,8 +27,8 @@
 
             widgetService
                 .findWidgetById(model.widgetId)
-                .then(function (response) {
-                    model.widget = response.data;
+                .then(function (widget) {
+                    model.widget = widget;
                 });
         }
 
@@ -36,11 +36,11 @@
 
         // implementation
 
-        function updateWidget(pageId, widget) {
+        function updateWidget(widget) {
             widgetService
-                .updateWidget(pageId, widget)
+                .updateWidget(widget._id, widget)
                 .then(function() {
-                    $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page'+model.pageId+'/widget');
+                    $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
                 });
         }
         /*

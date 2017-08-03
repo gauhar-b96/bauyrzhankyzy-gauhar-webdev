@@ -15,6 +15,7 @@
         // event handlers
         model.createWidget = createWidget;
 
+
         function init(){
             widgetService
                 .findWidgetsByPageId(model.pageId)
@@ -38,7 +39,7 @@
             widgetService
                 .createWidget(pageId, widget)
                 .then(function() {
-                    $location.url("api/assignment/page/" + pageId +"/widget")
+                    $location.url("api/assignment/page/" + pageId +"/widget/" + model.widgetId)
                 });
         }
 
