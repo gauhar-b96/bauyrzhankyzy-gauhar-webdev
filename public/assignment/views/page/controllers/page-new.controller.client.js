@@ -13,19 +13,30 @@
 
 
         function init(){
-            model.pages = pageService.findPageByWebsiteId(model.websiteId);
+            pageService
+                .findPageByWebsiteId(model.websiteId)
+                .then(function (pages) {
+                    model.pages = pages;
+                });
         }
 
         init();
 
         // implementation
         function createPage(websiteId, page) {
+            websiteId = model.websiteId;
+            pageService
+                .createPage(websiteId, page)
+                .then(function () {
+                    $location.url('/user/' + model.userId + '/website/' + websiteId + '/page');
+                });
+        }
+        /*
+        function createPage(websiteId, page) {
           pageService.createPage(websiteId, page);
             $location.url('/user/'+model.userId+'/website/'+websiteId+'/page');
         }
-
-
-
+        */
 
     }
 })();

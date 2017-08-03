@@ -3,10 +3,10 @@
 
         <div class="container-fluid">
 
-            <a ng-click="model.updatePage(model.page._id, model.page)">
+            <a ng-click="model.updatePage(model.page)">
                 <span class="pull-right glyphicon glyphicon-ok"></span></a>
 
-            <a class="navbar" href="#!/user/{{model.userId}}/website/{{model.websiteId}}//page">
+            <a class="navbar" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page">
                 <span class="glyphicon glyphicon-chevron-left"></span>Edit Page</a>
         </div>
 
@@ -29,9 +29,12 @@
               class="form-control"
               id="title">
             </input>
-    <a class="btn btn-default btn-danger btn-block"
-       ng-click="model.deletePage(model.page._id)"
+
+    <a class="btn btn-danger btn-block"
+       ng-click="model.deletePage(model.page)"
        role="button">Delete</a>
+
+
 </div>
 
 <div ng-include="'views/common/footer.view.client.html'"></div>

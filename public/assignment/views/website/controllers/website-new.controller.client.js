@@ -34,7 +34,7 @@
             websiteService
                 .createWebsite(userId, website)
                 .then(function() {
-                   $location.url("user/" + userId +"/website")
+                   $location.url("user/" + userId +"/website");
                 });
         }
     }
