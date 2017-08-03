@@ -17,7 +17,7 @@ app.delete('/api/assignment/user/:userId', deleteUser);
 
 function deleteUser(req, response) {
     var userId = req.params.userId;
-    var user = users.find(function user() {
+    var user = users.find(function (user) {
         return user._id === userId;
     });
     var index = users.indexOf(user);

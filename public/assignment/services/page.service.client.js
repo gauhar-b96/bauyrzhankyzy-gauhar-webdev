@@ -21,7 +21,10 @@
         //implementation
         function createPage(websiteId, page) {
             var url = "/api/assignment/website/" + websiteId + "/page";
-            return $http.post(url, page);
+            return $http.post(url, page)
+                .then(function (response) {
+                    return response.data;
+                });
         }
         /*
          function createPage(websiteId, page) {

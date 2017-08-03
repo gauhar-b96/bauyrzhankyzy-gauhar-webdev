@@ -63,7 +63,7 @@
 
         function findWidgetById (widgetId) {
         //    var url = "/api/assignment/user/" + userId + "/website" +websiteId + "/page/" + pageId + "/widget" + widgetId;
-            var url = "/api/assignment/page/" + pageId + "/widget" + widgetId;
+            var url = "/api/assignment/widget/" + widgetId;
             return $http.get(url);
         }
 
@@ -74,6 +74,15 @@
             })
         }
 */
+
+        function updateWidget(widgetId, widget) {
+            var url = "/api/assignment/widget/" + widgetId;
+            return $http.put(url, widget)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+        /*
         function updateWidget(widgetId, widget) {
             for (var w in widgets) {
                 if (widgets[w]._id === widgetId) {
@@ -84,7 +93,16 @@
             return null;
 
         }
+*/
+        function deleteWidget(widgetId) {
+            var url = "/api/assignment/widget/" + widgetId;
+            return $http.delete(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
 
+        /*
         function deleteWidget(widgetId) {
             var widget = widgets.find(function (widget) {
                 return widget._id === widgetId;
@@ -92,7 +110,7 @@
             var index = widgets.indexOf(widget);
             widgets.splice(index, 1);
         }
-
+*/
     }
 
 })();

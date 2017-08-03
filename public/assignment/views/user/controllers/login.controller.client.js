@@ -26,8 +26,8 @@
             promise
                 .then(function (response) {
                     user = response.data;
-                    if (user === null) {
-                        model.message = "Username" + username + "not found";
+                    if (user === "0") {
+                        model.errorMessage = "Username not found";
                     } else {
                         $rootScope.currentUser = user;
                         $location.url('/user/'+ user._id);

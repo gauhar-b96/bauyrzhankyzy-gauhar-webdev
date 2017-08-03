@@ -15,7 +15,7 @@ app.delete("/api/assignment/page/:pageId", deletePage);
 
 function deletePage(req, response) {
     var pageId = req.params.pageId;
-    var page = pages.find(function page() {
+    var page = pages.find(function (page) {
         return page._id === pageId;
     });
     var index = pages.indexOf(page);

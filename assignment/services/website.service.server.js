@@ -19,7 +19,7 @@ app.delete('/api/assignment/website/:websiteId', deleteWebsite);
 
 function deleteWebsite(req, response) {
     var websiteId = req.params.websiteId;
-    var website = websites.find(function website() {
+    var website = websites.find(function (website) {
         return website._id === websiteId;
     });
     var index = websites.indexOf(website);
