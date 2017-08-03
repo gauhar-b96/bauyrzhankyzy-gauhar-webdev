@@ -28,12 +28,7 @@
         init();
 
         // implementation
-        /*
-        function createWidget(pageId, widget) {
-            widgetService.createWidget(pageId, widget);
-            $location.url('/user/'+model.userId+'/website/'+websiteId+'/page'+pageId+'/widget');
-        }
-*/
+
         function createWidget(pageId, widget) {
             pageId = model.pageId;
             widgetService

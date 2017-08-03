@@ -39,13 +39,6 @@
                     $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page');
                 });
         }
-        /*
-        function updatePage(pageId, page) {
-            var website_id = page.websiteId;
-            pageService.updatePage(pageId, page);
-            $location.url('/user/'+model.userId+'/website/'+website_id+'/page');
-        }
-        */
 
         function deletePage(page) {
             pageService
@@ -54,12 +47,5 @@
                     $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page');
                 });
         }
-/*
-        function deletePage(pageId) {
-            var websiteId = pageService.findPageById(pageId).websiteId;
-            pageService.deletePage(pageId);
-            $location.url('/user/'+model.userId+'/website/'+websiteId+'/page');
-        }
-        */
     }
 })();

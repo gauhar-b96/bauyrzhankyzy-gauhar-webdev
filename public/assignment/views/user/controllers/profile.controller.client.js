@@ -24,22 +24,6 @@
         }
         init();
 
-        /*
-         userService
-         .findUserById(userId)
-         .then(renderUser);
-
-         function renderUser (user) {
-         model.user = user;
-         }
-         */
-
-/*
-        function updateUser(userId, user) {
-            userService.updateUser(userId, user);
-        }
-
-*/
         function updateUser(user) {
             userService
                 .updateUser(user._id, user)
@@ -48,11 +32,6 @@
                 });
         }
 
-/*
-      function deleteUser(userId) {
-            userService.deleteUser(userId);
-        }
-        */
         function deleteUser(user) {
             userService
                 .deleteUser(user._id)

@@ -42,11 +42,6 @@
         function getWidgetUrlForType(type) {
             return 'views/widget/templates/widget-'+type.toLowerCase()+'.view.client.html';
         }
-/*
-        function getWidgetEditUrlForType(type) {
-            $location.url('views/widget/templates/widget-'+type.toLowerCase()+'-edit.view.client.html');
-        }
-*/
 
     }
 })();
