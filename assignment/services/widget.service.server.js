@@ -52,7 +52,7 @@ function createWidget(req, response) {
     widget.pageId = pageId;
     widget._id = (new Date()).getTime() + "";
     widgets.push(widget);
-    response.json(widgets);
+    response.json(widget);
 }
 
 function findWidgetById(req, response) {

@@ -14,7 +14,6 @@
         model.updateWidget = updateWidget;
         model.deleteWidget = deleteWidget;
 
-        model.getWidgetEditUrlForType = getWidgetEditUrlForType;
 
         function init(){
             widgetService
@@ -50,8 +49,5 @@
                 });
         }
 
-        function getWidgetEditUrlForType(type) {
-            return 'views/widget/templates/widget-'+type.toLowerCase()+'-edit.view.client.html';
-        }
     }
 })();

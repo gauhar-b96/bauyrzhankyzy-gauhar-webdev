@@ -8,9 +8,7 @@
         model.pageId = $routeParams["pageId"];
         model.websiteId = $routeParams.websiteId;
         model.userId = $routeParams.userId;
-        model.widgetId = model.pageId;
-
-        model.getWidgetEditUrlForType = getWidgetEditUrlForType;
+       // model.widgetId = model.pageId;
 
         // event handlers
         model.createWidget = createWidget;
@@ -29,17 +27,17 @@
 
         // implementation
 
-        function createWidget(pageId, widget) {
+        function createWidget(pageId, widgetType) {
+            var widget = {};
+            widget.widgetType = widgetType;
             pageId = model.pageId;
             widgetService
                 .createWidget(pageId, widget)
-                .then(function() {
-                    $location.url("api/assignment/page/" + pageId +"/widget/" + model.widgetId)
+                .then(function(newWidget) {
+                    $location.url("/user/"+model.userId+"/website/"+
+                        model.websiteId+"/page/"+model.pageId+"/widget/"+newWidget._id);
                 });
         }
 
-        function getWidgetEditUrlForType(type) {
-            return 'views/widget/templates/widget-'+type.toLowerCase()+'-edit.view.client.html';
-        }
     }
 })();
