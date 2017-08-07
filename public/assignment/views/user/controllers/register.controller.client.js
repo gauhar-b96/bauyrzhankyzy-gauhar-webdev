@@ -14,6 +14,7 @@
         init();
 
         // implementation
+        /*
         function registerUser(user) {
             userService.findUserByUsername(user.username)
                 .then(function (response) {
@@ -28,6 +29,25 @@
                     _user = response.data;
                     $location.url("user/" + _user._id);
                 });
+
+        }
+        */
+
+        function registerUser(user) {
+            userService.findUserByUsername(user.username)
+                .then(function (response) {
+                    var _user = response.data;
+                    if (_user === null) {
+                        return userService.registerUser(user)
+                    } else {
+                        model.error = "Username already exists";
+                    }
+                })
+                .then(function (response) {
+                    _user = response.data;
+                    $location.url("user/" + _user._id);
+                });
+
         }
     }
 })();

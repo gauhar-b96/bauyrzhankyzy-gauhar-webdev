@@ -16,7 +16,7 @@
         function init(){
         }
         init();
-
+/*
         function login(user) {
             if(!user) {
                 model.errorMessage = "User not found";
@@ -34,6 +34,26 @@
                     }
                 });
         }
+        */
+
+        function login(user) {
+            if(!user) {
+                model.errorMessage = "User not found";
+                return;
+            }
+            var promise = userService.findUserByCredentials(user.username, user.password);
+            promise
+                .then(function (response) {
+                    user = response.data;
+                    if (user === null) {
+                        model.errorMessage = "Username not found";
+                    } else {
+                  //      $rootScope.currentUser = user;
+                        $location.url('/user/'+ user._id);
+                    }
+                });
+        }
     }
+
 })();
 
