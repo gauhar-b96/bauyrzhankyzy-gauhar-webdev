@@ -11,8 +11,7 @@ var users = [
 // http handlers
 app.get('/api/assignment/users', getAllUsers);
 app.get('/api/assignment/user/:userId', findUserById);
-app.get('/api/assignment/user', findUserByCredentials);
-app.get('/api/assignment/user', findUserByUsername);
+app.get('/api/assignment/user', findUser);
 app.post('/api/assignment/user', createUser);
 app.put('/api/assignment/user/:userId', updateUser);
 app.delete('/api/assignment/user/:userId', deleteUser);
@@ -56,7 +55,30 @@ function findUserById(req, response) {
  }
  }
  */
+function findUser(req, response) {
+    var username = req.query.username;
+    var password = req.query.password;
 
+    if (username && password) {
+        userModel
+            .findUserByCredentials(username, password)
+            .then(function (user) {
+                response.json(user);
+            }, function (err) {
+                response.sendStatus(404);
+            });
+    } else if (username) {
+        userModel
+            .findUserByUsername(username)
+            .then(function (user) {
+                response.json(user);
+            }, function (err) {
+                response.sendStatus(404);});
+    }
+}
+
+
+/*UPDATED FINDUSERBYUSERNAME & CREDENTIALS
 function findUserByCredentials(req, response) {
     var username = req.query.username;
     var password = req.query.password;
@@ -79,34 +101,8 @@ function findUserByUsername(req, response) {
             response.json(user);
         });
 }
-/*
-function findUserByUsername(req, response) {
-    var username = req.query.username;
-
-    if(username) {
-        for (var u in users) {
-            if (users[u].username === username) {
-                response.json(users[u]);
-                return;
-            }
-        }
-    }
-    response.send("0");
-}
-/*
-function findUserByUsername(req, response) {
-    var username = req.query.username;
-
-    userModel
-        .findUserByUsername(username)
-        .then(function(user) {
-            response.json(user);
-        }, function (err) {
-            response.sendStatus(404);
-        });
-}
 */
-/*
+/* OLD FINDUSER FUNCTION
  // findUser is a combination of findUserByCredentials and findUserByUsername
  // due to the shared API
  function findUser(req, response) {

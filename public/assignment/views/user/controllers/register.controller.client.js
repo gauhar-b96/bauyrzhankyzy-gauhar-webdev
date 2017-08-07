@@ -38,16 +38,17 @@
                 .then(function (response) {
                     var _user = response.data;
                     if (_user === null) {
-                        return userService.registerUser(user)
+                        return userService
+                            .registerUser(_user)
+                            .then(function (user) {
+                                $location.url("user/" + user._id);
+                            });
                     } else {
                         model.error = "Username already exists";
                     }
-                })
-                .then(function (response) {
-                    _user = response.data;
-                    $location.url("user/" + _user._id);
                 });
-
         }
+
+
     }
 })();
