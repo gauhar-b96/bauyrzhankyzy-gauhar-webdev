@@ -1,36 +1,54 @@
 var mongoose = require('mongoose');
-var userSchema =  require('./website.schema.server');
+var websiteSchema = require('./website.schema.server');
 var websiteModel = mongoose.model('WebsiteModel', websiteSchema);
-
+var userModel = require('../user/user.model.server');
 module.exports = websiteModel;
 
-websiteModel.createUser = createUser;
-websiteModel.findUserById = findUserById;
-websiteModel.findUserByUsername = findUserByUsername;
-websiteModel.findUserByCredentials = findUserByCredentials;
-websiteModel.deleteUser = deleteUser;
+websiteModel.createWebsite = createWebsite;
+websiteModel.findWebsitesByUser = findWebsitesByUser;
+websiteModel.findWebsiteById = findWebsiteById;
+websiteModel.deleteWebsite = deleteWebsite;
+
+
 websiteModel.updateUser = updateUser;
 
 
-function createUser(user) {
-    return userModel.create(user);
+function createWebsite(userId, website) {
+    website._user = userId;
+    var websiteTemp = null;
+    return websiteModel
+        .create(website)
+        .then(function (websiteDoc) {
+            websiteTemp = websiteDoc;
+            return userModel.addWebsite(userId, websiteDoc._id);
+        })
+        .then(function (userDoc) {
+            return websiteTemp;
+        });
 }
 
-function findUserById(userId) {
-    return userModel.findById(userId);
+function findWebsitesByUser(userId) {
+    return websiteModel
+        .find({_user: userId})
+        .populate('developer', 'username')
+        .exec();
 }
 
-function findUserByUsername(username) {
-    return userModel.findOne({username:username});
+function findWebsiteById(websiteId) {
+    return websiteModel.findById(websiteId);
+
+}
+// TODO: fix, controller etc.
+function deleteWebsite(userId, websiteId) {
+    return websiteModel
+        .remove({_id:websiteId})
+        .then(function (status) {
+            return userModel.removeWebsite(userId, websiteId);
+        });
 }
 
-function findUserByCredentials(username, password) {
-    return userModel.findOne({username:username, password: password});
-}
 
-function deleteUser(userId) {
-    return userModel.remove({_id: userId});
-}
+
 
 function updateUser(userId, newUser) {
     return userModel.update({_id: userId}, {

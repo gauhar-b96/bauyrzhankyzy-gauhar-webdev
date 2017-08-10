@@ -38,10 +38,6 @@
 
 
         function login(user) {
-            if(!user) {
-                model.errorMessage = "User not found";
-                return;
-            }
             var promise = userService.findUserByCredentials(user.username, user.password);
             promise
                 .then(function (response) {

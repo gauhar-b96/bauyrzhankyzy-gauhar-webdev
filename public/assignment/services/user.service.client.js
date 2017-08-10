@@ -6,7 +6,7 @@
     function userService($http) {
 
         var api = {
-            "registerUser": registerUser,
+            "createUser": createUser,
             "findUserById": findUserById,
             "findUserByUsername": findUserByUsername,
             "findUserByCredentials": findUserByCredentials,
@@ -16,7 +16,7 @@
         return api;
 
         // equivalent to createUser(user)
-        function registerUser(user) {
+        function createUser(user) {
             var url = "/api/assignment/user";
             return $http.post(url, user);
         }

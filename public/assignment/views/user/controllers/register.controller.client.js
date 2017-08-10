@@ -7,7 +7,7 @@
         var model = this;
 
         // event handlers
-        model.registerUser = registerUser;
+        model.createUser = createUser;
 
         function init(){
         }
@@ -33,22 +33,40 @@
         }
         */
 
-        function registerUser(user) {
+        function createUser(user) {
             userService.findUserByUsername(user.username)
                 .then(function (response) {
                     var _user = response.data;
                     if (_user === null) {
                         return userService
-                            .registerUser(_user)
-                            .then(function (user) {
-                                $location.url("user/" + user._id);
+                            .createUser(user)
+                            .then(function (response) {
+                                _user = response.data;
+                                $location.url("user/" + _user._id);
                             });
                     } else {
                         model.error = "Username already exists";
                     }
                 });
         }
-
+        /* not working function
+        function registerUser(user) {
+            userService.findUserByUsername(user.username)
+                .then(function (response) {
+                    var _user = response.data;
+                    if (_user === null) {
+                        return userService
+                            .createUser(_user)
+                            .then(function (response) {
+                                var newUser = response.data;
+                                $location.url("user/" + newUser._id);
+                            });
+                    } else {
+                        model.error = "Username already exists";
+                    }
+                });
+        }
+*/
 
     }
 })();
