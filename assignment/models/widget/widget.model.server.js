@@ -1,67 +1,61 @@
 var mongoose = require('mongoose');
-var userSchema =  require('./user.schema.server');
+var widgetSchema =  require('./widget.schema.server');
+var widgetModel = mongoose.model('WidgetModel', widgetSchema);
+var pageModel = require('../page/page.model.server');
 
-var WidgetModel = mongoose.model('WidgetModel', widgetSchema);
-userModel.createUser = createUser;
-userModel.findUserById = findUserById;
-userModel.findUserByUsername = findUserByUsername;
-userModel.findUserByCredentials = findUserByCredentials;
-userModel.deleteUser = deleteUser;
-userModel.updateUser = updateUser;
-userModel.addWebsite = addWebsite;
-userModel.removeWebsite = removeWebsite;
+widgetModel.createWidget = createWidget;
+widgetModel.findWidgetById = findWidgetById;
+widgetModel.findWidgetsByPageId = findWidgetsByPageId;
+widgetModel.deleteWidget = deleteWidget;
+widgetModel.updateWidget = updateWidget;
 
+module.exports = widgetModel;
 
-module.exports = userModel;
-
-// return userModel.create(user) is a promise
-function createUser(user) {
-    return userModel.create(user);
+function createWidget(pageId, widget) {
+    widget._page = pageId;
+    var widgetTemp = null;
+    return widgetModel
+        .create(widget)
+        .then(function (widgetDoc) {
+            widgetTemp = widgetDoc;
+            return pageModel.addWidget(websiteId, widgetTemp._id);
+        })
+        .then(function (widgetDoc) {
+            return widgetTemp;
+        });
 }
 
-function findUserById(userId) {
-    return userModel.findById(userId);
+function findWidgetsByPageId(pageId) {
+    return widgetModel
+        .find({_page: pageId});
 }
 
-function findUserByUsername(username) {
-    return userModel.findOne({username:username});
+function findWidgetById(widgetId) {
+    return widgetModel.findById(widgetId);
 }
 
-function findUserByCredentials(username, password) {
-    return userModel.findOne({username:username, password: password});
+function deleteWidget(pageId, widgetId) {
+    return widgetModel
+        .remove({_id:widgetId})
+        .then(function (status) {
+            return pageModel.removeWidget(pageId, widgetId);
+        });
 }
 
-function deleteUser(userId) {
-    return userModel.remove({_id: userId});
-}
-
-function updateUser(userId, newUser) {
-    return userModel.update({_id: userId}, {
+function updateWidget(pageId, newWidget) {
+    return widgetModel.update({_id: pageId}, {
         $set : {
-            firstName: newUser.firstName,
-            lastName: newUser.lastName,
-            phone: newUser.phone,
-            email: newUser.email
+            name: newWidget.name,
+            text: newWidget.text,
+            placeholder: newWidget.placeholder,
+            description: newWidget.description,
+            url: newWidget.url,
+            width: newWidget.width,
+            height: newWidget.height,
+            rows: newWidget.rows,
+            size: newWidget.size,
+            class: newWidget.class,
+            icon: newWidget.icon
         }
     });
-}
-
-
-function addWebsite(userId, websiteId) {
-   return userModel
-        .findById(userId)
-        .then(function(user) {
-            user.websites.push(websiteId);
-            return user.save();
-        });
-}
-
-function removeWebsite(userId, websiteId) {
-    return userModel
-        .findById(userId)
-        .then(function(user) {
-            var index = user.websites.indexOf(websiteId);
-            user.websites.splice(index, 1);
-            return user.save();
-        });
 }

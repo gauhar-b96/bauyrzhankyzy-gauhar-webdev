@@ -1,12 +1,23 @@
 var mongoose = require('mongoose');
 var widgetSchema = mongoose.Schema({
-    username: {type: String, require: true},
-    password: {type: String, require: true},
-    firstName: String,
-    lastName: String,
-    email: String,
-    phone: String,
-    dateCreated: {type: Date, default: Date.now},
-    websites: [{type: mongoose.Schema.Types.ObjectId, ref: "WebsiteModel"}]
+    _page: {type: mongoose.Schema.Types.ObjectId, ref: "PageModel"},
+    type: {
+        type: String,
+        enum : ['HEADING','IMAGE', 'YOUTUBE', 'HTML', 'INPUT']},
+    name: {type: String, require: true},
+    text: String,
+    placeholder: String,
+    description: String,
+    url: String,
+    width: String,
+    height: String,
+    rows: Number,
+    size: Number,
+    class: String,
+    icon: String,
+    deletable: Boolean,
+    formatted: Boolean,
+    dateCreated: {type: Date, default: Date.now}
 }, {collection: "widget"});
+
 module.exports = widgetSchema;

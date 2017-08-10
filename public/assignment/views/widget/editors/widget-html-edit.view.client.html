@@ -1,0 +1,40 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="gb-navbar-style">
+        <div class="container-fluid">
+
+            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
+                <span class="pull-right glyphicon glyphicon-ok"></span></a>
+
+            <a class="navbar"
+               href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
+                <span class="glyphicon glyphicon-chevron-left"></span>HTML Widget Editing/Creating</a>
+        </div>
+    </div>
+</nav>>
+
+<div class="container-fluid">
+
+    <label for="name">Name</label>
+    <input name="name"
+           placeholder="Widget Name"
+           class="form-control"
+           id="name"/>
+
+    <label for="text">Text</label>
+    <input name="text"
+           placeholder="Type in text"
+           class="form-control"
+           id="text"/>
+
+
+    <a class="btn btn-success btn-block"
+       ng-click="model.updateWidget(model.widget)"
+       role="button">Update</a>
+
+    <a class="btn btn-default btn-danger btn-block"
+       ng-click="model.deleteWidget(model.widget)"
+       role="button">Delete</a>
+</div>
+
+
+<div ng-include="'views/common/footer.view.client.html'"></div>
