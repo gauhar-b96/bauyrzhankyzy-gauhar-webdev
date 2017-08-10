@@ -54,43 +54,53 @@ function deleteWebsite(req, response) {
         });
 }
 /*
-function deleteWebsite(req, response) {
-    var websiteId = req.params.websiteId;
-    websiteModel
-        .deleteWebsite(websiteId)
-        .then(function (websiteDoc) {
-            response.json(websiteDoc);
-        }, function (error) {
-            response.statusCode(500).send(error);
-        });
-}
-*/
+ function deleteWebsite(req, response) {
+ var websiteId = req.params.websiteId;
+ websiteModel
+ .deleteWebsite(websiteId)
+ .then(function (websiteDoc) {
+ response.json(websiteDoc);
+ }, function (error) {
+ response.statusCode(500).send(error);
+ });
+ }
+ */
 /*
-function deleteWebsite(req, response) {
-    var websiteId = req.params.websiteId;
-    var website = websites.find(function (website) {
-        return website._id === websiteId;
-    });
-    var index = websites.indexOf(website);
-    websites.splice(index, 1);
-    response.sendStatus(200);
-}
-*/
-
+ function deleteWebsite(req, response) {
+ var websiteId = req.params.websiteId;
+ var website = websites.find(function (website) {
+ return website._id === websiteId;
+ });
+ var index = websites.indexOf(website);
+ websites.splice(index, 1);
+ response.sendStatus(200);
+ }
+ */
 function updateWebsite(req, response) {
     var websiteId = req.params.websiteId;
     var website = req.body;
 
-    for (var w in websites) {
-        if (websites[w]._id === websiteId) {
-            websites[w] = website;
-        //        response.send(website);
+    websiteModel
+        .updateWebsite(websiteId, website)
+        .then(function (status) {
             response.sendStatus(200);
-            return;
-        }
-    }
+        });
 }
+/*
+ function updateWebsite(req, response) {
+ var websiteId = req.params.websiteId;
+ var website = req.body;
 
+ for (var w in websites) {
+ if (websites[w]._id === websiteId) {
+ websites[w] = website;
+ //        response.send(website);
+ response.sendStatus(200);
+ return;
+ }
+ }
+ }
+ */
 
 function findWebsiteById(req, response) {
     websiteModel
@@ -102,28 +112,28 @@ function findWebsiteById(req, response) {
         });
 }
 /*
-function findWebsiteById(req, response) {
-    for (var w in websites) {
-        if (websites[w]._id === req.params.websiteId) {
-            response.json(websites[w]);
-            return;
-        }
-    }
-    response.sendStatus(404);
-}
-*/
+ function findWebsiteById(req, response) {
+ for (var w in websites) {
+ if (websites[w]._id === req.params.websiteId) {
+ response.json(websites[w]);
+ return;
+ }
+ }
+ response.sendStatus(404);
+ }
+ */
 /*
-function findWebsitesByUser(req, response) {
-    var userId = req.params.userId;
-    var sites = [];
-    for(var w in websites) {
-        if(websites[w].developerId === userId) {
-            sites.push(websites[w]);
-        }
-    }
-    response.send(sites);
-}
-*/
+ function findWebsitesByUser(req, response) {
+ var userId = req.params.userId;
+ var sites = [];
+ for(var w in websites) {
+ if(websites[w].developerId === userId) {
+ sites.push(websites[w]);
+ }
+ }
+ response.send(sites);
+ }
+ */
 
 function findWebsitesByUser(req, response) {
     var userId = req.params.userId;
@@ -133,4 +143,4 @@ function findWebsitesByUser(req, response) {
         .then (function(user) {
             return response.json(user);
         });
-    }
+}

@@ -4,7 +4,8 @@ var websiteSchema = mongoose.Schema({
     _user: {type: mongoose.Schema.Types.ObjectId, ref: "UserModel"},
     name: {type: String, require: true},
     description: String,
-    dateCreated: {type: Date, default: Date.now}
+    dateCreated: {type: Date, default: Date.now},
+    pages: [{type: mongoose.Schema.Types.ObjectId, ref: "PageModel"}]
 }, {collection: "website"});
 
 module.exports = websiteSchema;

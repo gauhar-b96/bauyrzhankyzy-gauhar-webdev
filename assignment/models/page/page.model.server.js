@@ -1,67 +1,74 @@
 var mongoose = require('mongoose');
-var userSchema =  require('./user.schema.server');
+var pageSchema =  require('./page.schema.server');
+var pageModel = mongoose.model('PageModel', pageSchema);
+var websiteModel = require('../website/website.model.server');
 
-var userModel = mongoose.model('UserModel', userSchema);
-userModel.createUser = createUser;
-userModel.findUserById = findUserById;
-userModel.findUserByUsername = findUserByUsername;
-userModel.findUserByCredentials = findUserByCredentials;
-userModel.deleteUser = deleteUser;
-userModel.updateUser = updateUser;
-userModel.addWebsite = addWebsite;
-userModel.removeWebsite = removeWebsite;
+pageModel.createPage = createPage;
+pageModel.findPageById = findPageById;
+pageModel.findPageByWebsiteId = findPageByWebsiteId;
+pageModel.deletePage = deletePage;
+pageModel.updatePage = updatePage;
+pageModel.addWidget = addWidget;
+pageModel.removeWidget = removeWidget;
 
+module.exports = pageModel;
 
-module.exports = userModel;
-
-// return userModel.create(user) is a promise
-function createUser(user) {
-    return userModel.create(user);
+function createPage(websiteId, page) {
+    page._website = websiteId;
+    var pageTemp = null;
+    return pageModel
+        .create(page)
+        .then(function (pageDoc) {
+            pageTemp = pageDoc;
+            return websiteModel.addPage(websiteId, pageTemp._id);
+        })
+        .then(function (pageDoc) {
+            return pageTemp;
+        });
 }
 
-function findUserById(userId) {
-    return userModel.findById(userId);
+function findPageByWebsiteId(websiteId) {
+    return pageModel
+        .find({_website: websiteId});
 }
 
-function findUserByUsername(username) {
-    return userModel.findOne({username:username});
+function findPageById(pageId) {
+    return pageModel.findById(pageId);
 }
 
-function findUserByCredentials(username, password) {
-    return userModel.findOne({username:username, password: password});
+function deletePage(websiteId, pageId) {
+    return pageModel
+        .remove({_id:pageId})
+        .then(function (status) {
+            return websiteModel.removePage(websiteId, pageId);
+        });
 }
 
-function deleteUser(userId) {
-    return userModel.remove({_id: userId});
-}
-
-function updateUser(userId, newUser) {
-    return userModel.update({_id: userId}, {
+function updatePage(websiteId, newPage) {
+    return pageModel.update({_id: websiteId}, {
         $set : {
-            firstName: newUser.firstName,
-            lastName: newUser.lastName,
-            phone: newUser.phone,
-            email: newUser.email
+            name: newPage.name,
+            title: newPage.title,
+            description: newPage.description
         }
     });
 }
 
-
-function addWebsite(userId, websiteId) {
-   return userModel
-        .findById(userId)
-        .then(function(user) {
-            user.websites.push(websiteId);
-            return user.save();
+function addWidget(pageId, widgetId) {
+   return pageModel
+        .findById(pageId)
+        .then(function(page) {
+            page.widgets.push(widgetId);
+            return page.save();
         });
 }
 
-function removeWebsite(userId, websiteId) {
-    return userModel
-        .findById(userId)
-        .then(function(user) {
-            var index = user.websites.indexOf(websiteId);
-            user.websites.splice(index, 1);
-            return user.save();
+function removeWidget(pageId, widgetId) {
+    return pageModel
+        .findById(pageId)
+        .then(function(page) {
+            var index = page.widgets.indexOf(widgetId);
+            page.widgets.splice(index, 1);
+            return page.save();
         });
 }

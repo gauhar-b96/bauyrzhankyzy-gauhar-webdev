@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var userSchema = mongoose.Schema({
+var widgetSchema = mongoose.Schema({
     username: {type: String, require: true},
     password: {type: String, require: true},
     firstName: String,
@@ -8,5 +8,5 @@ var userSchema = mongoose.Schema({
     phone: String,
     dateCreated: {type: Date, default: Date.now},
     websites: [{type: mongoose.Schema.Types.ObjectId, ref: "WebsiteModel"}]
-}, {collection: "user"});
-module.exports = userSchema;
+}, {collection: "widget"});
+module.exports = widgetSchema;

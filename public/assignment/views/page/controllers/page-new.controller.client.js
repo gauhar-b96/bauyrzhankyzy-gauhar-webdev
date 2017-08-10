@@ -27,7 +27,7 @@
             websiteId = model.websiteId;
             pageService
                 .createPage(websiteId, page)
-                .then(function () {
+                .then(function (page) {
                     $location.url('/user/' + model.userId + '/website/' + websiteId + '/page');
                 });
         }

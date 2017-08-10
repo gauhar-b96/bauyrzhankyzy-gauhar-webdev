@@ -1,4 +1,5 @@
 var app = require('../../express');
+var pageModel = require('../models/page/page.model.server');
 
 var pages = [
     { "_id": "321", "name": "Post 1", "websiteId": "456", "description": "Lorem" },
@@ -10,9 +11,19 @@ app.post("/api/assignment/website/:websiteId/page", createPage);
 app.get("/api/assignment/website/:websiteId/page", findPageByWebsiteId);
 app.get("/api/assignment/page/:pageId", findPageById);
 app.put("/api/assignment/page/:pageId", updatePage);
-app.delete("/api/assignment/page/:pageId", deletePage);
+app.delete("/api/assignment/website/:websiteId/page/:pageId", deletePage);
 
+function deletePage(req, response) {
+    var pageId = req.params.pageId;
+    var websiteId = req.params.websiteId;
 
+    pageModel
+        .deletePage(websiteId, pageId)
+        .then(function (status) {
+            response.json(status);
+        });
+}
+/*
 function deletePage(req, response) {
     var pageId = req.params.pageId;
     var page = pages.find(function (page) {
@@ -22,8 +33,18 @@ function deletePage(req, response) {
     pages.splice(index, 1);
     response.sendStatus(200);
 }
+*/
+function updatePage(req, response) {
+    var pageId = req.params.pageId;
+    var page = req.body;
 
-
+    pageModel
+        .updatePage(pageId, page)
+        .then(function (status) {
+            response.sendStatus(200);
+        });
+}
+/*
 function updatePage(req, response) {
     var pageId = req.params.pageId;
     var page = req.body;
@@ -36,7 +57,17 @@ function updatePage(req, response) {
         }
     }
 }
-
+*/
+function findPageById(req, response) {
+    pageModel
+        .findPageById(req.params.pageId)
+        .then(function (pageDoc) {
+            response.json(pageDoc);
+        }, function (error) {
+            response.sendStatus(404).send(error);
+        });
+}
+/*
 function findPageById(req, response) {
     for (var p in pages) {
         if (pages[p]._id === req.params.pageId) {
@@ -46,7 +77,19 @@ function findPageById(req, response) {
     }
     response.sendStatus(404);
 }
+*/
 
+function findPageByWebsiteId(req, response) {
+    var websiteId = req.params.websiteId;
+
+    pageModel
+        .findPageByWebsiteId(websiteId)
+        .then (function(website) {
+            return response.json(website);
+        });
+}
+
+/*
 function findPageByWebsiteId(req, response) {
     var websiteId = req.params.websiteId;
     var sites = [];
@@ -57,7 +100,22 @@ function findPageByWebsiteId(req, response) {
     }
     response.send(sites);
 }
+*/
 
+function createPage(req, response) {
+    var page = req.body;
+    var websiteId = req.params.websiteId;
+
+    pageModel
+        .createPage(websiteId, page)
+        .then(function (pageDoc) {
+            response.json(pageDoc);
+        }, function (error) {
+            response.statusCode(500).send(error);
+        });
+}
+
+/*
 function createPage(req, response) {
     var page = req.body;
     var websiteId = req.params.websiteId;
@@ -68,3 +126,4 @@ function createPage(req, response) {
     pages.push(page);
     response.json(pages);
 }
+    */

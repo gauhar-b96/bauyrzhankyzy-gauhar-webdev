@@ -1,7 +1,8 @@
 var mongoose = require('mongoose');
 var userSchema =  require('./user.schema.server');
-
 var userModel = mongoose.model('UserModel', userSchema);
+module.exports = userModel;
+
 userModel.createUser = createUser;
 userModel.findUserById = findUserById;
 userModel.findUserByUsername = findUserByUsername;
@@ -11,8 +12,6 @@ userModel.updateUser = updateUser;
 userModel.addWebsite = addWebsite;
 userModel.removeWebsite = removeWebsite;
 
-
-module.exports = userModel;
 
 // return userModel.create(user) is a promise
 function createUser(user) {

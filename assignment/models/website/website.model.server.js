@@ -8,10 +8,9 @@ websiteModel.createWebsite = createWebsite;
 websiteModel.findWebsitesByUser = findWebsitesByUser;
 websiteModel.findWebsiteById = findWebsiteById;
 websiteModel.deleteWebsite = deleteWebsite;
-
-
-websiteModel.updateUser = updateUser;
-
+websiteModel.updateWebsite = updateWebsite;
+websiteModel.addPage = addPage;
+websiteModel.removePage = removePage;
 
 function createWebsite(userId, website) {
     website._user = userId;
@@ -22,7 +21,7 @@ function createWebsite(userId, website) {
             websiteTemp = websiteDoc;
             return userModel.addWebsite(userId, websiteDoc._id);
         })
-        .then(function (userDoc) {
+        .then(function (websiteDoc) {
             return websiteTemp;
         });
 }
@@ -38,7 +37,7 @@ function findWebsiteById(websiteId) {
     return websiteModel.findById(websiteId);
 
 }
-// TODO: fix, controller etc.
+
 function deleteWebsite(userId, websiteId) {
     return websiteModel
         .remove({_id:websiteId})
@@ -50,13 +49,30 @@ function deleteWebsite(userId, websiteId) {
 
 
 
-function updateUser(userId, newUser) {
-    return userModel.update({_id: userId}, {
+function updateWebsite(websiteId, newWebsite) {
+    return websiteModel.update({_id: websiteId}, {
         $set : {
-            firstName: newUser.firstName,
-            lastName: newUser.lastName,
-            phone: newUser.phone,
-            email: newUser.email
+            name: newWebsite.name,
+            description: newWebsite.description,
         }
     });
+}
+
+function addPage(websiteId, pageId) {
+    return websiteModel
+        .findById(websiteId)
+        .then(function(website) {
+            website.pages.push(pageId);
+            return website.save();
+        });
+}
+
+function removePage(websiteId, pageId) {
+    return websiteModel
+        .findById(websiteId)
+        .then(function(website) {
+            var index = website.pages.indexOf(pageId);
+            website.pages.splice(index, 1);
+            return website.save();
+        });
 }
