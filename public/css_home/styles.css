@@ -1,0 +1,58 @@
+input, textarea {
+    margin-bottom: 5px;
+}
+
+
+h2{
+    margin: 0.0px 0.0px 14.9px 0.0px;
+    font: 18.0px
+    Times;
+    color: #000000;
+    -webkit-text-stroke: #000000
+}
+
+html {
+    background: url('http://7news.kz/sites/default/files/1431060560ohlvy.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+div.gb_box {
+    margin: 30px;
+    padding: 25px;
+    background-color: #ffffff;
+    border: 1px solid black;
+    opacity: 0.6;
+    filter: alpha(opacity=60); }
+
+body {
+    padding-top: 70px;
+    margin-bottom: 60px;
+    background-color: transparent;
+}
+
+body h1 {
+    position: relative;
+    padding-left: 25%;
+    padding-right: 25%;
+ /*   margin-inside: 50px;*/
+}
+
+.gb-welcome {
+
+    width: 50%;
+    margin: 0 auto;
+
+
+}
+.gb-navbar-style {
+    height: 55px;
+    background-color: #337ab7;
+    border-color: #333;
+}
+
+.gb-navbar-style a {
+    color: #333;
+}
