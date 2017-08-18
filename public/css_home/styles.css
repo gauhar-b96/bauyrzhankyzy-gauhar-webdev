@@ -2,13 +2,26 @@ input, textarea {
     margin-bottom: 5px;
 }
 
+.gb-gauhar-navbar {
+    text-align: center;
+}
+
+.gb-linkedin {
+    text-align: right;
+}
+.gb-navbar-style {
+    font-weight: bold;
+    padding-top: 15px;
+    background-color: #fcf8e3;
+    background-image: none;
+}
 
 h2{
     margin: 0.0px 0.0px 14.9px 0.0px;
     font: 18.0px
     Times;
-    color: #000000;
-    -webkit-text-stroke: #000000
+    color: #204d74;
+    -webkit-text-stroke-color: #000000;
 }
 
 html {
@@ -31,28 +44,20 @@ body {
     padding-top: 70px;
     margin-bottom: 60px;
     background-color: transparent;
+
+}
+body h1 {
+    text-align: center;
 }
 
-body h1 {
-    position: relative;
-    padding-left: 25%;
-    padding-right: 25%;
- /*   margin-inside: 50px;*/
+p {
+    color: black;
+    text-decoration-color: black;
+    text-emphasis-color: black;
+    font-weight: bold;
 }
 
 .gb-welcome {
-
     width: 50%;
     margin: 0 auto;
-
-
-}
-.gb-navbar-style {
-    height: 55px;
-    background-color: #337ab7;
-    border-color: #333;
-}
-
-.gb-navbar-style a {
-    color: #333;
 }
